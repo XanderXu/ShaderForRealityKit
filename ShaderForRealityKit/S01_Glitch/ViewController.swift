@@ -47,7 +47,7 @@ extension ViewController {
         encoder.setComputePipelineState(computePipeline)
         encoder.setTexture(context.sourceColorTexture, index: 0)
         encoder.setTexture(context.targetColorTexture, index: 1)
-        var args = GlitchArguments(time:Float(context.time))
+        var args = GlitchArguments(time: Float(context.time), fading: 1, amount: 1, speed: 1, centerFading: 0, amountR: simd_float2(x: 1, y: 0), amountB: simd_float2(x: 1, y: 0))
         encoder.setBytes(&args, length: MemoryLayout<GlitchArguments>.stride, index: 0)
         
         let threadsPerGrid = MTLSize(width: context.sourceColorTexture.width,

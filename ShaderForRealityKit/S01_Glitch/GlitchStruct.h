@@ -18,6 +18,12 @@
 struct GlitchArguments
 {
     float time;
+    float fading;//0~1
+    float amount;//0~5
+    float speed;//0~10
+    float centerFading;//0~1
+    simd_float2 amountR;//0~5
+    simd_float2 amountB;//0~5
 };
 
 #endif /* GlitchStruct_h */

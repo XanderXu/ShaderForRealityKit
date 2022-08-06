@@ -11,41 +11,44 @@ using namespace metal;
 
 [[kernel]]
 void postProcessRGBSplit(uint2 gid [[thread_position_in_grid]],
-                       texture2d<half, access::read> inColor [[texture(0)]],
-                       texture2d<half, access::write> outColor [[texture(1)]],
+                         texture2d<half, access::read> inColor [[texture(0)]],
+                         texture2d<half, access::write> outColor [[texture(1)]],
                          constant GlitchArguments *args [[buffer(0)]])
 {
     if (gid.x >= inColor.get_width() || gid.y >= inColor.get_height()) {
         return;
     }
-    half _Fading = 1;//0~1
-    half _Amount = 1;//0~5
-    half _Speed = 1;//0~10
-    half _CenterFading = 1;//0~1
-    half _AmountR = 1;//0~5
-    half _AmountB = 1;//0~5
+    half _Fading = args->fading;
+    half _Amount = args->amount;
+    half _Speed = args->speed;
+    half _CenterFading = args->centerFading;
+    half2 _AmountR = half2(args->amountR);
+    half2 _AmountB = half2(args->amountB);
     half _TimeX = args->time;
     
-    float2 uv = float2(gid.x/inColor.get_width(), gid.y/inColor.get_height());
+    uint2 inSize = uint2(inColor.get_width(), inColor.get_height());
+    half2 uv = half2(gid) / half2(inSize);
     half time = _TimeX * 6 * _Speed;
     
     half splitAmount = (1.0 + sin(time)) * 0.5;
     splitAmount *= 1.0 + sin(time * 2) * 0.5;
     splitAmount = pow(splitAmount, 3.0h);
     splitAmount *= 0.05;
-    half distance = length(uv - float2(0.5, 0.5));
+    half distance = length(uv - half2(0.5, 0.5));
     splitAmount *= _Fading * _Amount;
     splitAmount *= mix(1.0h, distance, _CenterFading);
     
-    float offsetX = splitAmount * inColor.get_width();
-    uint x = min(gid.x + uint(offsetX * _AmountR), inColor.get_width()-1);
-    half3 colorR = inColor.read(uint2(x, gid.y)).rgb;
+    half2 offset = splitAmount * half2(inSize);
+    uint2 rxy = min(gid + uint2(offset * _AmountR), inSize-1);
+    uint2 bxy = gid - uint2(offset * _AmountB);
+    
+    half3 colorR = inColor.read(rxy).rgb;
     half4 sceneColor = inColor.read(gid);
-    half3 colorB = inColor.read(uint2(gid.x - offsetX * _AmountB, gid.y)).rgb;
+    half3 colorB = inColor.read(bxy).rgb;
     
-    half3 splitColor = half3(colorR.r, sceneColor.g, colorB.b);
-    half3 finalColor = mix(sceneColor.rgb, splitColor, _Fading);
+    half4 splitColor = half4(colorR.r, sceneColor.g, colorB.b, 1);
+    half4 finalColor = mix(sceneColor, splitColor, _Fading);
     
-    outColor.write(half4(finalColor,1.0h), gid);
+    outColor.write(finalColor, gid);
 }
 
