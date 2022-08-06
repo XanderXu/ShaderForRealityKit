@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  ShaderForRealityKit
+//  S01_Glitch
 //
-//  Created by CoderXu on 2022/7/26.
+//  Created by CoderXu on 2022/8/6.
 //
 
 import UIKit
