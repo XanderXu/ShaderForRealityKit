@@ -26,4 +26,14 @@ struct RGBSplitArguments
     simd_float2 amountB;//0~5
 };
 
+struct RGBSplitArgumentsV2
+{
+    float time;
+    float amount;//0~5
+    float speed;//0~2
+    float amplitude;//1~6
+    simd_float2 direction;//0~1
+    
+};
+
 #endif /* GlitchStruct_h */

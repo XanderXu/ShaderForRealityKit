@@ -31,7 +31,11 @@ extension ViewController {
             fatalError()
         }
 
-        if let invertKernel = library.makeFunction(name: "postProcessRGBSplit") {
+//        if let invertKernel = library.makeFunction(name: "postProcessRGBSplit") {
+//            // Create a pipeline state object and store it in a property.
+//            computePipeline = try? device.makeComputePipelineState(function: invertKernel)
+//        }
+        if let invertKernel = library.makeFunction(name: "postProcessRGBSplitV2") {
             // Create a pipeline state object and store it in a property.
             computePipeline = try? device.makeComputePipelineState(function: invertKernel)
         }
@@ -47,8 +51,10 @@ extension ViewController {
         encoder.setComputePipelineState(computePipeline)
         encoder.setTexture(context.sourceColorTexture, index: 0)
         encoder.setTexture(context.targetColorTexture, index: 1)
-        var args = RGBSplitArguments(time: Float(context.time), fading: 1, amount: 1, speed: 1, centerFading: 0, amountR: simd_float2(x: 1, y: 0), amountB: simd_float2(x: 1, y: 0))
-        encoder.setBytes(&args, length: MemoryLayout<RGBSplitArguments>.stride, index: 0)
+//        var args = RGBSplitArguments(time: Float(context.time), fading: 1, amount: 1, speed: 1, centerFading: 0, amountR: simd_float2(x: 1, y: 0), amountB: simd_float2(x: 1, y: 0))
+//        encoder.setBytes(&args, length: MemoryLayout<RGBSplitArguments>.stride, index: 0)
+        var args = RGBSplitArgumentsV2(time: Float(context.time), amount: 1, speed: 2, amplitude: 3, direction: simd_float2(x: 1, y: 0))
+        encoder.setBytes(&args, length: MemoryLayout<RGBSplitArgumentsV2>.stride, index: 0)
         
         let threadsPerGrid = MTLSize(width: context.sourceColorTexture.width,
                                      height: context.sourceColorTexture.height,
