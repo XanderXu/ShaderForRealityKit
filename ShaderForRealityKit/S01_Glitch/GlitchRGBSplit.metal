@@ -13,7 +13,7 @@ using namespace metal;
 void postProcessRGBSplit(uint2 gid [[thread_position_in_grid]],
                          texture2d<half, access::read> inColor [[texture(0)]],
                          texture2d<half, access::write> outColor [[texture(1)]],
-                         constant GlitchArguments *args [[buffer(0)]])
+                         constant RGBSplitArguments *args [[buffer(0)]])
 {
     if (gid.x >= inColor.get_width() || gid.y >= inColor.get_height()) {
         return;
@@ -39,8 +39,10 @@ void postProcessRGBSplit(uint2 gid [[thread_position_in_grid]],
     splitAmount *= mix(1.0h, distance, _CenterFading);
     
     half2 offset = splitAmount * half2(inSize);
+//    uint2 rxy = clamp(gid + uint2(offset * _AmountR), uint2(1), inSize-1);
+//    uint2 bxy = clamp(gid - uint2(offset * _AmountB), uint2(1), inSize-1);
     uint2 rxy = min(gid + uint2(offset * _AmountR), inSize-1);
-    uint2 bxy = gid - uint2(offset * _AmountB);
+    uint2 bxy = max(gid - uint2(offset * _AmountB), 1);
     
     half3 colorR = inColor.read(rxy).rgb;
     half4 sceneColor = inColor.read(gid);

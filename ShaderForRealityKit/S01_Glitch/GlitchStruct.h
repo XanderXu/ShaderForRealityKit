@@ -15,7 +15,7 @@
 /// Because Metal is based on C++, defining a C++ struct in a header and adding a bridging header to the
 /// project allows both Swift and Metal to use the same struct definition. Using a C++ struct accessed by both
 /// Metal shaders and swift.
-struct GlitchArguments
+struct RGBSplitArguments
 {
     float time;
     float fading;//0~1
