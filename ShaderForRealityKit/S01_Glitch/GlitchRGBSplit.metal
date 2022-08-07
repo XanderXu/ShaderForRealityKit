@@ -26,8 +26,8 @@ void postProcessRGBSplit(uint2 gid [[thread_position_in_grid]],
     half2 _AmountB = half2(args->amountB);
     half _TimeX = args->time;
     
-    uint2 inSize = uint2(inColor.get_width(), inColor.get_height());
-    half2 uv = half2(gid) / half2(inSize);
+    half2 inSize = half2(inColor.get_width(), inColor.get_height());
+    half2 uv = half2(gid) / inSize;
     half time = _TimeX * 6 * _Speed;
     
     half splitAmount = (1.0 + sin(time)) * 0.5;
@@ -38,11 +38,9 @@ void postProcessRGBSplit(uint2 gid [[thread_position_in_grid]],
     splitAmount *= _Fading * _Amount;
     splitAmount *= mix(1.0h, distance, _CenterFading);
     
-    half2 offset = splitAmount * half2(inSize);
-//    uint2 rxy = clamp(gid + uint2(offset * _AmountR), uint2(1), inSize-1);
-//    uint2 bxy = clamp(gid - uint2(offset * _AmountB), uint2(1), inSize-1);
-    uint2 rxy = min(gid + uint2(offset * _AmountR), inSize-1);
-    uint2 bxy = max(gid - uint2(offset * _AmountB), 1);
+    half2 offset = splitAmount * inSize;
+    uint2 rxy = uint2(clamp(half2(gid) + offset * _AmountR, 0, inSize-1));
+    uint2 bxy = uint2(clamp(half2(gid) - offset * _AmountB, 0, inSize-1));
     
     half3 colorR = inColor.read(rxy).rgb;
     half4 sceneColor = inColor.read(gid);
