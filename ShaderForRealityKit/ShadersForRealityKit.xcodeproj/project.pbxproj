@@ -14,6 +14,7 @@
 		6C07CDE9289F8951004D2A27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C07CDE7289F8951004D2A27 /* LaunchScreen.storyboard */; };
 		6C07CDF2289F896E004D2A27 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 6C07CDED289F896D004D2A27 /* Experience.rcproject */; };
 		6C07CDF3289F896E004D2A27 /* GlitchRGBSplit.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C07CDEE289F896D004D2A27 /* GlitchRGBSplit.metal */; };
+		6C07CDF628A2B266004D2A27 /* X-Noise256.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C07CDF528A2B265004D2A27 /* X-Noise256.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		6C07CDEE289F896D004D2A27 /* GlitchRGBSplit.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = GlitchRGBSplit.metal; sourceTree = "<group>"; };
 		6C07CDEF289F896D004D2A27 /* GlitchStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlitchStruct.h; sourceTree = "<group>"; };
 		6C07CDF0289F896E004D2A27 /* BridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
+		6C07CDF528A2B265004D2A27 /* X-Noise256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "X-Noise256.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				6C07CDE0289F894F004D2A27 /* ViewController.swift */,
 				6C07CDF0289F896E004D2A27 /* BridgeHeader.h */,
 				6C07CDED289F896D004D2A27 /* Experience.rcproject */,
+				6C07CDF528A2B265004D2A27 /* X-Noise256.png */,
 				6C07CDEE289F896D004D2A27 /* GlitchRGBSplit.metal */,
 				6C07CDEF289F896D004D2A27 /* GlitchStruct.h */,
 				6C07CDE2289F894F004D2A27 /* Main.storyboard */,
@@ -131,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C07CDE9289F8951004D2A27 /* LaunchScreen.storyboard in Resources */,
+				6C07CDF628A2B266004D2A27 /* X-Noise256.png in Resources */,
 				6C07CDE6289F8951004D2A27 /* Assets.xcassets in Resources */,
 				6C07CDE4289F894F004D2A27 /* Main.storyboard in Resources */,
 			);

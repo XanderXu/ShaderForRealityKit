@@ -57,9 +57,9 @@ void postProcessRGBSplit(uint2 gid [[thread_position_in_grid]],
 
 [[kernel]]
 void postProcessRGBSplitV2(uint2 gid [[thread_position_in_grid]],
-                         texture2d<half, access::read> inColor [[texture(0)]],
-                         texture2d<half, access::write> outColor [[texture(1)]],
-                         constant RGBSplitArgumentsV2 *args [[buffer(0)]])
+                           texture2d<half, access::read> inColor [[texture(0)]],
+                           texture2d<half, access::write> outColor [[texture(1)]],
+                           constant RGBSplitArgumentsV2 *args [[buffer(0)]])
 {
     if (gid.x >= inColor.get_width() || gid.y >= inColor.get_height()) {
         return;
@@ -92,6 +92,103 @@ void postProcessRGBSplitV2(uint2 gid [[thread_position_in_grid]],
     // 混合分离出来的颜色
     half3 finalColor = half3(colorR.r, sceneColor.g, colorB.b);
     finalColor *= (1.0 - splitAmount * 0.5);
+    
+    outColor.write(half4(finalColor,1), gid);
+}
+
+[[kernel]]
+void postProcessRGBSplitV3(uint2 gid [[thread_position_in_grid]],
+                           texture2d<half, access::read> inColor [[texture(0)]],
+                           texture2d<half, access::write> outColor [[texture(1)]],
+                           texture2d<half, access::read> noise [[texture(2)]],
+                           constant RGBSplitArgumentsV3 *args [[buffer(0)]])
+{
+    if (gid.x >= inColor.get_width() || gid.y >= inColor.get_height()) {
+        return;
+    }
+    // 参数传递
+    half _Amount = args->amount;
+    half _Speed = args->speed;
+    half _Frequency = args->frequency;
+    int type = args->type;
+    half2 _Direction = half2(args->direction);
+    half _TimeX = args->time;
+    // uv 与 time 转换
+    half2 inSize = half2(inColor.get_width(), inColor.get_height());
+    half time = _TimeX * _Speed;
+    
+    // 计算抖动曲线
+    half strength = 0.5 + 0.5 * cos(_TimeX * _Frequency);
+    if (type == 1) {
+        strength = 1;
+    }
+    _Amount *= 0.001 * strength;
+    half splitAmountR= sin(time * 0.2) * _Amount;
+    half splitAmountB= sin(time * 0.1) * _Amount;
+    
+    // 计算分离后的坐标
+    half2 offsetR = splitAmountR * inSize;
+    half2 offsetB = splitAmountB * inSize;
+    uint2 rxy = uint2(clamp(half2(gid) + offsetR * _Direction, 0, inSize-1));
+    uint2 bxy = uint2(clamp(half2(gid) - offsetB * _Direction, 0, inSize-1));
+    // 读取颜色
+    half3 colorR = inColor.read(rxy).rgb;
+    half4 sceneColor = inColor.read(gid);
+    half3 colorB = inColor.read(bxy).rgb;
+    // 混合分离出来的颜色
+    half3 finalColor = half3(colorR.r, sceneColor.g, colorB.b);
+    
+    outColor.write(half4(finalColor,1), gid);
+}
+
+float randomNoise(float x, float y)
+{
+    return fract(sin(dot(float2(x, y), float2(12.9898, 78.233))) * 43758.5453);
+}
+
+inline half4 Pow4(half4 v, half p)
+{
+    return half4(pow(v.x, p), pow(v.y, p), pow(v.z, p), v.w);
+}
+
+[[kernel]]
+void postProcessRGBSplitV5(uint2 gid [[thread_position_in_grid]],
+                           texture2d<half, access::read> inColor [[texture(0)]],
+                           texture2d<half, access::write> outColor [[texture(1)]],
+                           texture2d<half, access::read> noise [[texture(2)]],
+                           constant RGBSplitArgumentsV5 *args [[buffer(0)]])
+{
+    if (gid.x >= inColor.get_width() || gid.y >= inColor.get_height()) {
+        return;
+    }
+    // 参数传递
+    half _Speed = args->speed;
+    half _Amplitude = args->amplitude;
+    half _TimeX = args->time;
+    // uv 与 time 转换
+    half2 inSize = half2(inColor.get_width(), inColor.get_height());
+    half time = _TimeX * _Speed;
+    
+    // 计算抖动曲线
+    half2 noiseUV = half2(fract(time), fract(2.0 * time / 25.0));
+    half4 noiseColor = noise.read(uint2(noiseUV * half2(noise.get_width(), noise.get_height())));
+    half4 splitAmount = Pow4(noiseColor, 8.0) * half4(_Amplitude, _Amplitude, _Amplitude, 1.0);
+
+    splitAmount *= 2.0 * splitAmount.w - 1.0;
+    
+    // 计算分离后的坐标
+    half2 offsetXY = splitAmount.xy * inSize;
+    half2 offsetYZ = splitAmount.yz * inSize;
+    half2 offsetZX = splitAmount.zx * inSize;
+    uint2 rxy = uint2(clamp(half2(gid) + offsetXY * half2(1,-1), 0, inSize-1));
+    uint2 gxy = uint2(clamp(half2(gid) + offsetYZ * half2(1,-1), 0, inSize-1));
+    uint2 bxy = uint2(clamp(half2(gid) + offsetZX * half2(1,-1), 0, inSize-1));
+    // 读取颜色
+    half3 colorR = inColor.read(rxy).rgb;
+    half3 sceneColor = inColor.read(gxy).rgb;
+    half3 colorB = inColor.read(bxy).rgb;
+    // 混合分离出来的颜色
+    half3 finalColor = half3(colorR.r, sceneColor.g, colorB.b);
     
     outColor.write(half4(finalColor,1), gid);
 }

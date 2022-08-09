@@ -33,7 +33,28 @@ struct RGBSplitArgumentsV2
     float speed;//0~2
     float amplitude;//1~6
     simd_float2 direction;//0~1
-    
+};
+enum IntervalType
+{
+    Periodic=0,
+    Infinite,
+};
+
+struct RGBSplitArgumentsV3
+{
+    float time;
+    float amount;//0~200
+    float speed;//0~15
+    float frequency;//0.1~25
+    enum IntervalType type;
+    simd_float2 direction;//0~1
+};
+
+struct RGBSplitArgumentsV5
+{
+    float time;
+    float amplitude;//0~5
+    float speed;//0~1
 };
 
 #endif /* GlitchStruct_h */
