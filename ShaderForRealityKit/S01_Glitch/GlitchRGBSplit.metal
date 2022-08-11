@@ -141,9 +141,42 @@ void postProcessRGBSplitV3(uint2 gid [[thread_position_in_grid]],
     outColor.write(half4(finalColor,1), gid);
 }
 
-float randomNoise(float x, float y)
+half randomNoise(half x, half y)
 {
-    return fract(sin(dot(float2(x, y), float2(12.9898, 78.233))) * 43758.5453);
+    return fract(sin(dot(half2(x, y), half2(12.9898, 78.233))) * 43758.5453);
+}
+[[kernel]]
+void postProcessRGBSplitV4(uint2 gid [[thread_position_in_grid]],
+                           texture2d<half, access::read> inColor [[texture(0)]],
+                           texture2d<half, access::write> outColor [[texture(1)]],
+                           constant RGBSplitArgumentsV4 *args [[buffer(0)]])
+{
+    if (gid.x >= inColor.get_width() || gid.y >= inColor.get_height()) {
+        return;
+    }
+    // 参数传递
+    half _Speed = args->speed;
+    half _Indensity = args->indensity;
+    half2 _Direction = half2(args->direction);
+    half _TimeX = args->time;
+    // uv 与 time 转换
+    half2 inSize = half2(inColor.get_width(), inColor.get_height());
+    half time = _TimeX * _Speed;
+    // 计算抖动曲线
+    half splitAmount = _Indensity * randomNoise(time, 2);
+    
+    // 计算分离后的坐标
+    half2 offset = splitAmount * inSize;
+    uint2 rxy = uint2(clamp(half2(gid) + offset * _Direction, 0, inSize-1));
+    uint2 bxy = uint2(clamp(half2(gid) - offset * _Direction, 0, inSize-1));
+    // 读取颜色
+    half3 colorR = inColor.read(rxy).rgb;
+    half4 sceneColor = inColor.read(gid);
+    half3 colorB = inColor.read(bxy).rgb;
+    // 混合分离出来的颜色
+    half3 finalColor = half3(colorR.r, sceneColor.g, colorB.b);
+    
+    outColor.write(half4(finalColor,1), gid);
 }
 
 inline half4 Pow4(half4 v, half p)

@@ -49,6 +49,13 @@ struct RGBSplitArgumentsV3
     enum IntervalType type;
     simd_float2 direction;//0~1
 };
+struct RGBSplitArgumentsV4
+{
+    float time;
+    float indensity;//-0.1~0.1
+    float speed;//0~100
+    simd_float2 direction;//0~1
+};
 
 struct RGBSplitArgumentsV5
 {
