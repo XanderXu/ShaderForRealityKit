@@ -91,7 +91,6 @@ void postProcessRGBSplitV2(uint2 gid [[thread_position_in_grid]],
     half3 colorB = inColor.read(bxy).rgb;
     // 混合分离出来的颜色
     half3 finalColor = half3(colorR.r, sceneColor.g, colorB.b);
-    finalColor *= (1.0 - splitAmount * 0.5);
     
     outColor.write(half4(finalColor,1), gid);
 }
@@ -100,7 +99,6 @@ void postProcessRGBSplitV2(uint2 gid [[thread_position_in_grid]],
 void postProcessRGBSplitV3(uint2 gid [[thread_position_in_grid]],
                            texture2d<half, access::read> inColor [[texture(0)]],
                            texture2d<half, access::write> outColor [[texture(1)]],
-                           texture2d<half, access::read> noise [[texture(2)]],
                            constant RGBSplitArgumentsV3 *args [[buffer(0)]])
 {
     if (gid.x >= inColor.get_width() || gid.y >= inColor.get_height()) {

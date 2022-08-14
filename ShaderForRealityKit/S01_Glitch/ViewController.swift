@@ -75,22 +75,6 @@ private extension ViewController {
         guard let library = device.makeDefaultLibrary() else {
             fatalError()
         }
-        let textureLoader = MTKTextureLoader(device: device)
-        do {
-            noiseTexture = try textureLoader.newTexture(name: "X-Noise256", scaleFactor: 1, bundle: nil)
-        }catch {
-            print(error)
-        }
-        // 其他的 MTLTexture 加载方式，Data 加载，cgImage 加载
-        //        let textureLoader = MTKTextureLoader(device: device)
-        //        let path = Bundle.main.path(forResource: "X-Noise256", ofType: "png")!
-        //        let data = NSData(contentsOfFile: path)! as Data
-        //        noiseTexture = try? textureLoader.newTexture(data: data, options: [MTKTextureLoader.Option.SRGB : (false as NSNumber)])
-        
-        //        if let cgImage = UIImage(named: "X-Noise256")?.cgImage {
-        //            noiseTexture = try? textureLoader.newTexture(cgImage: cgImage)
-        //        }
-
         return library.makeFunction(name: "postProcessRGBSplitV3")
     }
     func loadPostProcessRGBSplitV4(device: MTLDevice) -> MTLFunction? {
@@ -105,6 +89,15 @@ private extension ViewController {
         }
         let textureLoader = MTKTextureLoader(device: device)
         noiseTexture = try? textureLoader.newTexture(name: "X-Noise256", scaleFactor: 1, bundle: nil)
+        // 其他的 MTLTexture 加载方式，Data 加载，cgImage 加载
+        //        let textureLoader = MTKTextureLoader(device: device)
+        //        let path = Bundle.main.path(forResource: "X-Noise256", ofType: "png")!
+        //        let data = NSData(contentsOfFile: path)! as Data
+        //        noiseTexture = try? textureLoader.newTexture(data: data, options: [MTKTextureLoader.Option.SRGB : (false as NSNumber)])
+        
+        //        if let cgImage = UIImage(named: "X-Noise256")?.cgImage {
+        //            noiseTexture = try? textureLoader.newTexture(cgImage: cgImage)
+        //        }
         return library.makeFunction(name: "postProcessRGBSplitV5")
     }
     
