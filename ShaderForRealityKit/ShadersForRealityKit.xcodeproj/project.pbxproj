@@ -14,6 +14,7 @@
 		6C07CDE9289F8951004D2A27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C07CDE7289F8951004D2A27 /* LaunchScreen.storyboard */; };
 		6C07CDF2289F896E004D2A27 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 6C07CDED289F896D004D2A27 /* Experience.rcproject */; };
 		6C07CDF3289F896E004D2A27 /* GlitchRGBSplit.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C07CDEE289F896D004D2A27 /* GlitchRGBSplit.metal */; };
+		6C8E64B028AB9B1100265189 /* GlitchRGBSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E64AF28AB9B1100265189 /* GlitchRGBSplit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		6C07CDEE289F896D004D2A27 /* GlitchRGBSplit.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = GlitchRGBSplit.metal; sourceTree = "<group>"; };
 		6C07CDEF289F896D004D2A27 /* GlitchStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlitchStruct.h; sourceTree = "<group>"; };
 		6C07CDF0289F896E004D2A27 /* BridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
+		6C8E64AF28AB9B1100265189 /* GlitchRGBSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchRGBSplit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			children = (
 				6C07CDDE289F894F004D2A27 /* AppDelegate.swift */,
 				6C07CDE0289F894F004D2A27 /* ViewController.swift */,
+				6C8E64AF28AB9B1100265189 /* GlitchRGBSplit.swift */,
 				6C07CDF0289F896E004D2A27 /* BridgeHeader.h */,
 				6C07CDED289F896D004D2A27 /* Experience.rcproject */,
 				6C07CDEE289F896D004D2A27 /* GlitchRGBSplit.metal */,
@@ -147,6 +150,7 @@
 				6C07CDDF289F894F004D2A27 /* AppDelegate.swift in Sources */,
 				6C07CDF2289F896E004D2A27 /* Experience.rcproject in Sources */,
 				6C07CDF3289F896E004D2A27 /* GlitchRGBSplit.metal in Sources */,
+				6C8E64B028AB9B1100265189 /* GlitchRGBSplit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
