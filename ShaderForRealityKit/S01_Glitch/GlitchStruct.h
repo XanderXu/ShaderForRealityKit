@@ -64,4 +64,11 @@ struct RGBSplitArgumentsV5
     float speed;//0~1
 };
 
+struct ImageBlockArguments
+{
+    float time;
+    float speed;//0~50
+    float blockSize;//0~50
+};
+
 #endif /* GlitchStruct_h */

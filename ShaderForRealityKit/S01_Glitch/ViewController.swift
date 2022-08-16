@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
 
     func loadPostprocessingShader(device: MTLDevice) {
-        if let kernel = glitch.loadPostProcessRGBSplit(device: device, version: .V3) {
+        if let kernel = glitch.loadPostProcess(device: device, version: .V3) {
             computePipeline = try? device.makeComputePipelineState(function: kernel)
         }
     }
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         encoder.setTexture(context.sourceColorTexture, index: 0)
         encoder.setTexture(context.targetColorTexture, index: 1)
         
-        glitch.setCustomRGBSplitArguments(encoder: encoder, context: context)
+        glitch.setCustomArguments(encoder: encoder, context: context)
         
         let threadsPerGrid = MTLSize(width: context.sourceColorTexture.width,
                                      height: context.sourceColorTexture.height,

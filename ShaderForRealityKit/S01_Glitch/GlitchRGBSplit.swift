@@ -33,9 +33,9 @@ class GlitchRGBSplit {
         }
     }
     
-    var noiseTexture: MTLTexture?
-    var version: Version = .default
-    func loadPostProcessRGBSplit(device: MTLDevice, version: Version = .default) -> MTLFunction? {
+    private(set) var noiseTexture: MTLTexture?
+    private(set) var version: Version = .default
+    func loadPostProcess(device: MTLDevice, version: Version = .default) -> MTLFunction? {
         guard let library = device.makeDefaultLibrary() else {
             fatalError()
         }
@@ -56,7 +56,7 @@ class GlitchRGBSplit {
         return library.makeFunction(name: version.functionName)
     }
     
-    func setCustomRGBSplitArguments(encoder: MTLComputeCommandEncoder, context: ARView.PostProcessContext) {
+    func setCustomArguments(encoder: MTLComputeCommandEncoder, context: ARView.PostProcessContext) {
         switch version {
         case .default:
             var args = RGBSplitArguments(time: Float(context.time), fading: 1, amount: 1, speed: 1, centerFading: 0, amountR: simd_float2(x: 1, y: 0), amountB: simd_float2(x: 1, y: 0))
