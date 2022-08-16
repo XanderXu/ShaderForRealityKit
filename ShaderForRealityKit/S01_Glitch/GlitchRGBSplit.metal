@@ -139,9 +139,9 @@ void postProcessRGBSplitV3(uint2 gid [[thread_position_in_grid]],
     outColor.write(half4(finalColor,1), gid);
 }
 
-half randomNoise(half x, half y)
+float randomNoise(float x, float y)
 {
-    return fract(sin(dot(half2(x, y), half2(12.9898, 78.233))) * 43758.5453);
+    return fract(sin(dot(float2(x, y), float2(12.9898, 78.233))) * 43758.5453);
 }
 [[kernel]]
 void postProcessRGBSplitV4(uint2 gid [[thread_position_in_grid]],
@@ -156,10 +156,10 @@ void postProcessRGBSplitV4(uint2 gid [[thread_position_in_grid]],
     half _Speed = args->speed;
     half _Indensity = args->indensity;
     half2 _Direction = half2(args->direction);
-    half _TimeX = args->time;
+    float _TimeX = args->time;
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
-    half time = _TimeX * _Speed;
+    float time = _TimeX * _Speed;
     // 计算抖动曲线
     half splitAmount = _Indensity * randomNoise(time, 2);
     

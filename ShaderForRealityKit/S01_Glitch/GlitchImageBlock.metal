@@ -9,14 +9,14 @@
 #include "GlitchStruct.h"
 using namespace metal;
 
-inline half randomNoise(half2 seed)
+inline float randomNoise(float2 seed)
 {
-    return fract(sin(dot(seed, half2(17.13, 3.71))) * 43758.5453123);
+    return fract(sin(dot(seed, float2(17.13, 3.71))) * 43758.5453123);
 }
 
-inline half randomNoise(half seed)
+inline float randomNoise(float seed)
 {
-    return randomNoise(half2(seed, 1.0));
+    return randomNoise(float2(seed, 1.0));
 }
 
 [[kernel]]
@@ -31,18 +31,19 @@ void postProcessImageBlock(uint2 gid [[thread_position_in_grid]],
     // 参数传递
     half _Speed = args->speed;
     half _BlockSize = args->blockSize;
-    half _TimeX = args->time;
+    float _TimeX = args->time;
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
-    half time = _TimeX * _Speed;
+    float2 uv = float2(gid) / float2(inSize);
+    float time = _TimeX * _Speed;
     // 计算错位图块
-    half2 block = randomNoise(floor(half2(gid) / inSize * _BlockSize) * floor(time));
-    half displaceNoise = pow(block.x, 8.0h) * pow(block.x, 3.0h);
+    half block = randomNoise(floor(uv * _BlockSize) * floor(time));
+    half displaceNoise = pow(block, 8.0h) * pow(block, 3.0h);
     
     // 计算错位后的坐标
     half2 offset = displaceNoise * inSize;
-    uint2 gxy = uint2(clamp(half2(gid) + offset * 0.05 * randomNoise(7.0), 0, inSize-1));
-    uint2 bxy = uint2(clamp(half2(gid) - offset * 0.05 * randomNoise(13.0), 0, inSize-1));
+    uint2 gxy = uint2(clamp(half2(gid) + offset * 0.1 * randomNoise(7.0), 0, inSize-1));
+    uint2 bxy = uint2(clamp(half2(gid) - offset * 0.1 * randomNoise(13.0), 0, inSize-1));
     // 读取颜色
     half4 sceneColor = inColor.read(gid);
     half3 colorG = inColor.read(gxy).rgb;
