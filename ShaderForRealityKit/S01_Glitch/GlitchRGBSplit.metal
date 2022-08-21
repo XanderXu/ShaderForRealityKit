@@ -25,14 +25,14 @@ void postProcessRGBSplit(uint2 gid [[thread_position_in_grid]],
     half _CenterFading = args->centerFading;
     half2 _AmountR = half2(args->amountR);
     half2 _AmountB = half2(args->amountB);
-    half _TimeX = args->time;
+    float _TimeX = args->time;
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
     half2 uv = half2(gid) / inSize;
-    half time = _TimeX * 6 * _Speed;
+    float time = _TimeX * 6.0 * _Speed;
     // 计算抖动曲线
-    half splitAmount = (1.0h + sin(time)) * 0.5h;
-    splitAmount *= 1.0h + sin(time * 2) * 0.5h;
+    half splitAmount = (1.0h + half(sin(time))) * 0.5h;
+    splitAmount *= 1.0h + half(sin(time * 2)) * 0.5h;
     splitAmount = pow(splitAmount, 3.0h);
     splitAmount *= 0.05h;
     splitAmount *= _Fading * _Amount;
@@ -69,15 +69,15 @@ void postProcessRGBSplitV2(uint2 gid [[thread_position_in_grid]],
     half _Speed = args->speed;
     half _Amplitude = args->amplitude;
     half2 _Direction = half2(args->direction);
-    half _TimeX = args->time;
+    float _TimeX = args->time;
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
     half time = _TimeX * _Speed;
     // 计算抖动曲线
-    half splitAmount = (1.0h + sin(time * 6.0h)) * 0.5h;
-    splitAmount *= 1.0h + sin(time * 16.0h) * 0.5h;
-    splitAmount *= 1.0h + sin(time * 19.0h) * 0.5h;
-    splitAmount *= 1.0h + sin(time * 27.0h) * 0.5h;
+    half splitAmount = (1.0h + half(sin(time * 6.0))) * 0.5h;
+    splitAmount *= 1.0h + half(sin(time * 16.0)) * 0.5h;
+    splitAmount *= 1.0h + half(sin(time * 19.0)) * 0.5h;
+    splitAmount *= 1.0h + half(sin(time * 27.0)) * 0.5h;
     splitAmount = pow(splitAmount, _Amplitude);
     splitAmount *= (0.05h * _Amount);
     
@@ -110,19 +110,19 @@ void postProcessRGBSplitV3(uint2 gid [[thread_position_in_grid]],
     half _Frequency = args->frequency;
     int type = args->type;
     half2 _Direction = half2(args->direction);
-    half _TimeX = args->time;
+    float _TimeX = args->time;
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
-    half time = _TimeX * _Speed;
+    float time = _TimeX * _Speed;
     
     // 计算抖动曲线
-    half strength = 0.5h + 0.5h * cos(_TimeX * _Frequency);
+    half strength = 0.5h + 0.5h * half(cos(_TimeX * _Frequency));
     if (type == 1) {
         strength = 1;
     }
     _Amount *= 0.001h * strength;
-    half splitAmountR= sin(time * 0.2h) * _Amount;
-    half splitAmountB= sin(time * 0.1h) * _Amount;
+    half splitAmountR= half(sin(time * 0.2)) * _Amount;
+    half splitAmountB= half(sin(time * 0.1)) * _Amount;
     
     // 计算分离后的坐标
     half2 offsetR = splitAmountR * inSize;
@@ -195,10 +195,10 @@ void postProcessRGBSplitV5(uint2 gid [[thread_position_in_grid]],
     // 参数传递
     half _Speed = args->speed;
     half _Amplitude = args->amplitude;
-    half _TimeX = args->time;
+    float _TimeX = args->time;
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
-    half time = _TimeX * _Speed;
+    float time = _TimeX * _Speed;
     
     // 计算抖动曲线
     half2 noiseUV = half2(fract(time), fract(2.0h * time / 25.0h));

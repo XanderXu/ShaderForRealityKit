@@ -165,7 +165,7 @@ void postProcessImageBlockV4(uint2 gid [[thread_position_in_grid]],
     
     half rgbSplitNoise = pow(randomNoise(5.1379), 7.1) * _RGBSplit_Indensity;
     half lineNoise = lineNoise1 * lineNoise2 * _Amount - rgbSplitNoise;
-    half2 noiseXY = half2(0.1h * randomNoise(7.0), 0.1h * randomNoise(23.0));
+    half2 noiseXY = 0.1h * half2(randomNoise(7.0), randomNoise(23.0));
     // 计算错位后的坐标
     half2 offset = lineNoise * inSize;
     uint2 gxy = uint2(clamp(half2(gid) + offset * noiseXY.x, 0, inSize-1));
