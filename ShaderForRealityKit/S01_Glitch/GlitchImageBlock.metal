@@ -42,8 +42,8 @@ void postProcessImageBlock(uint2 gid [[thread_position_in_grid]],
     
     // 计算错位后的坐标
     half2 offset = displaceNoise * inSize;
-    uint2 gxy = uint2(clamp(half2(gid) + offset * 0.1 * randomNoise(7.0), 0, inSize-1));
-    uint2 bxy = uint2(clamp(half2(gid) - offset * 0.1 * randomNoise(13.0), 0, inSize-1));
+    uint2 gxy = uint2(clamp(half2(gid) + offset * 0.1h * randomNoise(7.0), 0, inSize-1));
+    uint2 bxy = uint2(clamp(half2(gid) - offset * 0.1h * randomNoise(13.0), 0, inSize-1));
     // 读取颜色
     half4 sceneColor = inColor.read(gid);
     half3 colorG = inColor.read(gxy).rgb;

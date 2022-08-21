@@ -31,13 +31,13 @@ void postProcessRGBSplit(uint2 gid [[thread_position_in_grid]],
     half2 uv = half2(gid) / inSize;
     half time = _TimeX * 6 * _Speed;
     // 计算抖动曲线
-    half splitAmount = (1.0 + sin(time)) * 0.5;
-    splitAmount *= 1.0 + sin(time * 2) * 0.5;
+    half splitAmount = (1.0h + sin(time)) * 0.5h;
+    splitAmount *= 1.0h + sin(time * 2) * 0.5h;
     splitAmount = pow(splitAmount, 3.0h);
-    splitAmount *= 0.05;
+    splitAmount *= 0.05h;
     splitAmount *= _Fading * _Amount;
     // 中心到边缘抖动幅度渐变
-    half distance = length(uv - half2(0.5, 0.5));
+    half distance = length(uv - half2(0.5h, 0.5h));
     splitAmount *= mix(1.0h, distance, _CenterFading);
     
     // 计算分离后的坐标
@@ -74,12 +74,12 @@ void postProcessRGBSplitV2(uint2 gid [[thread_position_in_grid]],
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
     half time = _TimeX * _Speed;
     // 计算抖动曲线
-    half splitAmount = (1.0 + sin(time * 6.0)) * 0.5;
-    splitAmount *= 1.0 + sin(time * 16.0) * 0.5;
-    splitAmount *= 1.0 + sin(time * 19.0) * 0.5;
-    splitAmount *= 1.0 + sin(time * 27.0) * 0.5;
+    half splitAmount = (1.0h + sin(time * 6.0h)) * 0.5h;
+    splitAmount *= 1.0h + sin(time * 16.0h) * 0.5h;
+    splitAmount *= 1.0h + sin(time * 19.0h) * 0.5h;
+    splitAmount *= 1.0h + sin(time * 27.0h) * 0.5h;
     splitAmount = pow(splitAmount, _Amplitude);
-    splitAmount *= (0.05 * _Amount);
+    splitAmount *= (0.05h * _Amount);
     
     // 计算分离后的坐标
     half2 offset = splitAmount * inSize;
@@ -116,13 +116,13 @@ void postProcessRGBSplitV3(uint2 gid [[thread_position_in_grid]],
     half time = _TimeX * _Speed;
     
     // 计算抖动曲线
-    half strength = 0.5 + 0.5 * cos(_TimeX * _Frequency);
+    half strength = 0.5h + 0.5h * cos(_TimeX * _Frequency);
     if (type == 1) {
         strength = 1;
     }
-    _Amount *= 0.001 * strength;
-    half splitAmountR= sin(time * 0.2) * _Amount;
-    half splitAmountB= sin(time * 0.1) * _Amount;
+    _Amount *= 0.001h * strength;
+    half splitAmountR= sin(time * 0.2h) * _Amount;
+    half splitAmountB= sin(time * 0.1h) * _Amount;
     
     // 计算分离后的坐标
     half2 offsetR = splitAmountR * inSize;
@@ -179,7 +179,7 @@ void postProcessRGBSplitV4(uint2 gid [[thread_position_in_grid]],
 
 inline half4 Pow4(half4 v, half p)
 {
-    return half4(pow(v.x, p), pow(v.y, p), pow(v.z, p), v.w);
+    return half4(pow(v.xyz, p), v.w);
 }
 
 [[kernel]]
@@ -201,11 +201,11 @@ void postProcessRGBSplitV5(uint2 gid [[thread_position_in_grid]],
     half time = _TimeX * _Speed;
     
     // 计算抖动曲线
-    half2 noiseUV = half2(fract(time), fract(2.0 * time / 25.0));
+    half2 noiseUV = half2(fract(time), fract(2.0h * time / 25.0h));
     half4 noiseColor = noise.read(uint2(noiseUV * half2(noise.get_width(), noise.get_height())));
-    half4 splitAmount = Pow4(noiseColor, 8.0) * half4(_Amplitude, _Amplitude, _Amplitude, 1.0);
+    half4 splitAmount = Pow4(noiseColor, 8.0h) * half4(_Amplitude, _Amplitude, _Amplitude, 1.0h);
 
-    splitAmount *= 2.0 * splitAmount.w - 1.0;
+    splitAmount *= 2.0h * splitAmount.w - 1.0h;
     
     // 计算分离后的坐标
     half2 offsetXY = splitAmount.xy * inSize;

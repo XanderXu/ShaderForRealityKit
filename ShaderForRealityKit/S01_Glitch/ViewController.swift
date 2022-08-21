@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
 
     func loadPostprocessingShader(device: MTLDevice) {
-        if let kernel = glitch.loadPostProcess(device: device, version: .default) {
+        if let kernel = glitch.loadPostProcess(device: device, version: .V1) {
             computePipeline = try? device.makeComputePipelineState(function: kernel)
         }
     }

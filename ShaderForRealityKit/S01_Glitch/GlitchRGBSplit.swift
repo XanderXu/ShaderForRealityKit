@@ -11,7 +11,7 @@ import MetalKit
 
 class GlitchRGBSplit {
     enum Version {
-        case `default`
+        case V1
         case V2
         case V3
         case V4
@@ -19,7 +19,7 @@ class GlitchRGBSplit {
         
         var functionName: String {
             switch self {
-            case .default:
+            case .V1:
                 return "postProcessRGBSplit"
             case .V2:
                 return "postProcessRGBSplitV2"
@@ -34,8 +34,8 @@ class GlitchRGBSplit {
     }
     
     private(set) var noiseTexture: MTLTexture?
-    private(set) var version: Version = .default
-    func loadPostProcess(device: MTLDevice, version: Version = .default) -> MTLFunction? {
+    private(set) var version: Version = .V1
+    func loadPostProcess(device: MTLDevice, version: Version = .V1) -> MTLFunction? {
         guard let library = device.makeDefaultLibrary() else {
             fatalError()
         }
@@ -58,7 +58,7 @@ class GlitchRGBSplit {
     
     func setCustomArguments(encoder: MTLComputeCommandEncoder, context: ARView.PostProcessContext) {
         switch version {
-        case .default:
+        case .V1:
             var args = RGBSplitArguments(time: Float(context.time), fading: 1, amount: 1, speed: 1, centerFading: 0, amountR: simd_float2(x: 1, y: 0), amountB: simd_float2(x: 1, y: 0))
             encoder.setBytes(&args, length: MemoryLayout<RGBSplitArguments>.stride, index: 0)
         case .V2:

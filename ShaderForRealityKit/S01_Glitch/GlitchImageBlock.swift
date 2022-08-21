@@ -11,14 +11,14 @@ import MetalKit
 
 class GlitchImageBlock {
     enum Version {
-        case `default`
+        case V1
         case V2
         case V3
         case V4
         
         var functionName: String {
             switch self {
-            case .default:
+            case .V1:
                 return "postProcessImageBlock"
             case .V2:
                 return "postProcessImageBlockV2"
@@ -30,8 +30,8 @@ class GlitchImageBlock {
         }
     }
     
-    private(set) var version: Version = .default
-    func loadPostProcess(device: MTLDevice, version: Version = .default) -> MTLFunction? {
+    private(set) var version: Version = .V1
+    func loadPostProcess(device: MTLDevice, version: Version = .V1) -> MTLFunction? {
         guard let library = device.makeDefaultLibrary() else {
             fatalError()
         }
@@ -41,7 +41,7 @@ class GlitchImageBlock {
     
     func setCustomArguments(encoder: MTLComputeCommandEncoder, context: ARView.PostProcessContext) {
         switch version {
-        case .default:
+        case .V1:
             var args = ImageBlockArguments(time: Float(context.time), speed: 10, blockSize: 8)
             encoder.setBytes(&args, length: MemoryLayout<ImageBlockArguments>.stride, index: 0)
         case .V2:
