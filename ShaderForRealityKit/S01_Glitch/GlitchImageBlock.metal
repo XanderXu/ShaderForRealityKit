@@ -76,7 +76,7 @@ void postProcessImageBlockV2(uint2 gid [[thread_position_in_grid]],
     // 计算错位图块
     half block = randomNoise(float2(floor(uv * _BlockSize) * floor(time)));
     half displaceNoise = pow(block, 8.0h) * pow(block, 3.0h);
-    half splitRGBNoise = pow(half(randomNoise(7.2341)), 17.0h);
+    half splitRGBNoise = pow(randomNoise(7.2341), 17.0);
     half2 offsetXY = displaceNoise - splitRGBNoise * _MaxRGBSplit;
     half2 noiseXY = 0.1h * half2(randomNoise(13.0), randomNoise(7.0));
     // 计算错位后的坐标
@@ -117,7 +117,7 @@ void postProcessImageBlockV3(uint2 gid [[thread_position_in_grid]],
     // 计算错位图块
     half blockLayer1 = randomNoise(float2(floor(uv * _BlockLayer1_UV) * floor(time * 30)));
     half lineNoise1 = pow(blockLayer1, _BlockLayer1_Indensity);
-    half rgbSplitNoise = pow(half(randomNoise(5.1379)), 7.1h) * _RGBSplit_Indensity;
+    half rgbSplitNoise = pow((randomNoise(5.1379)), 7.1) * _RGBSplit_Indensity;
     half lineNoise = lineNoise1 * _Amount - rgbSplitNoise;
     half2 noiseXY = 0.1h * half2(randomNoise(5.0), randomNoise(31.0));
     // 计算错位后的坐标
