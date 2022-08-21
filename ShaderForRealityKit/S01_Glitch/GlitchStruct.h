@@ -71,4 +71,38 @@ struct ImageBlockArguments
     float blockSize;//0~50
 };
 
+struct ImageBlockArgumentsV2
+{
+    float time;
+    float speed;//0~50
+    float blockSize;//0~50
+    simd_float2 maxRGBSplit;//0-25
+};
+
+struct ImageBlockArgumentsV3
+{
+    float time;
+    float speed;//0~1
+    float amount;//0~10
+    float fade;//0~1
+    float RGBSplitIndensity;//0-50
+    float blockLayer1_Indensity;//0-50
+    simd_float2 blockLayer1_UV;//0-50
+};
+
+struct ImageBlockArgumentsV4
+{
+    float time;
+    float speed;//0~1
+    float amount;//0~10
+    float fade;//0~1
+    float RGBSplitIndensity;//0-50
+    float blockLayer1_Indensity;//0-50
+    float blockLayer2_Indensity;//0-50
+    simd_float2 blockLayer1_UV;//0-50
+    simd_float2 blockLayer2_UV;//0-50
+};
+
+
+
 #endif /* GlitchStruct_h */
