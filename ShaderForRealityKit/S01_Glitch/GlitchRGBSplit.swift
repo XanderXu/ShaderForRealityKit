@@ -35,6 +35,9 @@ class GlitchRGBSplit {
     
     private(set) var noiseTexture: MTLTexture?
     private(set) var version: Version = .V1
+    var intervalType: IntervalType = .init(rawValue: 2)
+    private var randomFrequency: Float = 1
+    private var frameCount: Int = 0
     func loadPostProcess(device: MTLDevice, version: Version = .V1) -> MTLFunction? {
         guard let library = device.makeDefaultLibrary() else {
             fatalError()
@@ -65,7 +68,15 @@ class GlitchRGBSplit {
             var args = RGBSplitArgumentsV2(time: Float(context.time), amount: 1, speed: 2, amplitude: 3, direction: simd_float2(x: 1, y: 0))
             encoder.setBytes(&args, length: MemoryLayout<RGBSplitArgumentsV2>.stride, index: 0)
         case .V3:
-            var args = RGBSplitArgumentsV3(time: Float(context.time), amount: 30, speed: 15, frequency: 3, type: .init(rawValue: 0), direction: simd_float2(x: 1, y: 0))
+            var frequency: Float = 3
+            if intervalType.rawValue == 2 {
+                if frameCount > Int(frequency) {
+                    frameCount = 0
+                    frequency = Float.random(in: 0...frequency)
+                }
+                frameCount += 1
+            }
+            var args = RGBSplitArgumentsV3(time: Float(context.time), amount: 30, speed: 15, frequency: frequency, type: intervalType, direction: simd_float2(x: 1, y: 0))
             encoder.setBytes(&args, length: MemoryLayout<RGBSplitArgumentsV3>.stride, index: 0)
         case .V4:
             var args = RGBSplitArgumentsV4(time: Float(context.time), indensity: 0.5*0.1, speed: 10, direction: simd_float2(x: 1, y: 0))

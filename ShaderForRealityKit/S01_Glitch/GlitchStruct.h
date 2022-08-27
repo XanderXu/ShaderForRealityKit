@@ -36,8 +36,9 @@ struct RGBSplitArgumentsV2
 };
 enum IntervalType
 {
-    Periodic=0,
-    Infinite,
+    Periodic=0,//周期性重复
+    Infinite,//持续最大值
+    Random//随机数
 };
 
 struct RGBSplitArgumentsV3
@@ -103,6 +104,16 @@ struct ImageBlockArgumentsV4
     simd_float2 blockLayer2_UV;//0-50
 };
 
-
+struct LineBlockArguments
+{
+    float time;
+    float speed;//[Range(0f, 1f)]
+    enum IntervalType type;
+    float frequency; //[Range(0f, 25f)]
+    float amount;//[Range(0f, 1f)]
+    float linesWidth;//[Range(0.1f, 10f)]
+    float offset;//[Range(0f, 13f)]
+    float alpha;//[Range(0f, 1f)]
+};
 
 #endif /* GlitchStruct_h */
