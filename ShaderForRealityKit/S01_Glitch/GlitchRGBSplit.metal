@@ -139,7 +139,7 @@ void postProcessRGBSplitV3(uint2 gid [[thread_position_in_grid]],
     outColor.write(half4(finalColor,1), gid);
 }
 
-float randomNoise(float x, float y)
+inline float randomNoise(float x, float y)
 {
     return fract(sin(dot(float2(x, y), float2(12.9898, 78.233))) * 43758.5453);
 }

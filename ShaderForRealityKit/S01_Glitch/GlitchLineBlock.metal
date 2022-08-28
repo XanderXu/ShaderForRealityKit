@@ -9,22 +9,22 @@
 #include "GlitchStruct.h"
 using namespace metal;
 
-float randomNoise(float2 c)
+inline float randomNoise(float2 c)
 {
     return fract(sin(dot(c.xy, float2(12.9898, 78.233))) * 43758.5453);
 }
 
-float trunc(float x, float num_levels)
+inline float trunc(float x, float num_levels)
 {
     return floor(x * num_levels) / num_levels;
 }
 
-float2 trunc(float2 x, float2 num_levels)
+inline float2 trunc(float2 x, float2 num_levels)
 {
     return floor(x * num_levels) / num_levels;
 }
 
-float3 rgb2yuv(float3 rgb)
+inline float3 rgb2yuv(float3 rgb)
 {
     float3 yuv;
     yuv.x = dot(rgb, float3(0.299, 0.587, 0.114));
@@ -33,7 +33,7 @@ float3 rgb2yuv(float3 rgb)
     return yuv;
 }
 
-float3 yuv2rgb(float3 yuv)
+inline float3 yuv2rgb(float3 yuv)
 {
     float3 rgb;
     rgb.r = yuv.x + yuv.z * 1.13983;

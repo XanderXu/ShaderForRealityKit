@@ -126,4 +126,13 @@ struct TileJitterArguments
     float splittingNumber;//[Range(0f, 50f)]
     simd_float2 direction;//0~1
 };
+
+struct ScanLineJitterArguments
+{
+    float time;
+    enum IntervalType type;
+    float frequency; //[Range(0f, 25f)]
+    float amount;
+    float threshold;
+};
 #endif /* GlitchStruct_h */
