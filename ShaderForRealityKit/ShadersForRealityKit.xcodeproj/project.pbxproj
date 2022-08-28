@@ -16,6 +16,8 @@
 		6C07CDF3289F896E004D2A27 /* GlitchRGBSplit.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C07CDEE289F896D004D2A27 /* GlitchRGBSplit.metal */; };
 		6C7B810D28BA1CB200648F4B /* GlitchLineBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B810C28BA1CB200648F4B /* GlitchLineBlock.swift */; };
 		6C7B810F28BA23DE00648F4B /* GlitchLineBlock.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B810E28BA23DD00648F4B /* GlitchLineBlock.metal */; };
+		6C7B811128BBA2EA00648F4B /* GlitchTileJitter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B811028BBA2EA00648F4B /* GlitchTileJitter.metal */; };
+		6C7B811328BBA31200648F4B /* GlitchTileJitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B811228BBA31200648F4B /* GlitchTileJitter.swift */; };
 		6C8E64B028AB9B1100265189 /* GlitchRGBSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E64AF28AB9B1100265189 /* GlitchRGBSplit.swift */; };
 		6C8E64B228ABA61A00265189 /* GlitchImageBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E64B128ABA61A00265189 /* GlitchImageBlock.swift */; };
 		6C8E64B428ABB00400265189 /* GlitchImageBlock.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E64B328ABB00400265189 /* GlitchImageBlock.metal */; };
@@ -34,6 +36,8 @@
 		6C07CDF0289F896E004D2A27 /* BridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
 		6C7B810C28BA1CB200648F4B /* GlitchLineBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchLineBlock.swift; sourceTree = "<group>"; };
 		6C7B810E28BA23DD00648F4B /* GlitchLineBlock.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GlitchLineBlock.metal; sourceTree = "<group>"; };
+		6C7B811028BBA2EA00648F4B /* GlitchTileJitter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GlitchTileJitter.metal; sourceTree = "<group>"; };
+		6C7B811228BBA31200648F4B /* GlitchTileJitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchTileJitter.swift; sourceTree = "<group>"; };
 		6C8E64AF28AB9B1100265189 /* GlitchRGBSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchRGBSplit.swift; sourceTree = "<group>"; };
 		6C8E64B128ABA61A00265189 /* GlitchImageBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchImageBlock.swift; sourceTree = "<group>"; };
 		6C8E64B328ABB00400265189 /* GlitchImageBlock.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GlitchImageBlock.metal; sourceTree = "<group>"; };
@@ -77,9 +81,11 @@
 				6C8E64B328ABB00400265189 /* GlitchImageBlock.metal */,
 				6C7B810C28BA1CB200648F4B /* GlitchLineBlock.swift */,
 				6C7B810E28BA23DD00648F4B /* GlitchLineBlock.metal */,
+				6C7B811228BBA31200648F4B /* GlitchTileJitter.swift */,
+				6C7B811028BBA2EA00648F4B /* GlitchTileJitter.metal */,
+				6C07CDEF289F896D004D2A27 /* GlitchStruct.h */,
 				6C07CDF0289F896E004D2A27 /* BridgeHeader.h */,
 				6C07CDED289F896D004D2A27 /* Experience.rcproject */,
-				6C07CDEF289F896D004D2A27 /* GlitchStruct.h */,
 				6C07CDE2289F894F004D2A27 /* Main.storyboard */,
 				6C07CDE5289F8951004D2A27 /* Assets.xcassets */,
 				6C07CDE7289F8951004D2A27 /* LaunchScreen.storyboard */,
@@ -166,7 +172,9 @@
 				6C8E64B428ABB00400265189 /* GlitchImageBlock.metal in Sources */,
 				6C8E64B228ABA61A00265189 /* GlitchImageBlock.swift in Sources */,
 				6C7B810D28BA1CB200648F4B /* GlitchLineBlock.swift in Sources */,
+				6C7B811128BBA2EA00648F4B /* GlitchTileJitter.metal in Sources */,
 				6C8E64B028AB9B1100265189 /* GlitchRGBSplit.swift in Sources */,
+				6C7B811328BBA31200648F4B /* GlitchTileJitter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -116,4 +116,14 @@ struct LineBlockArguments
     float alpha;//[Range(0f, 1f)]
 };
 
+struct TileJitterArguments
+{
+    float time;
+    float speed;//[Range(0f, 1f)]
+    enum IntervalType type;
+    float frequency; //[Range(0f, 25f)]
+    float amount;//[Range(0f, 100f)]
+    float splittingNumber;//[Range(0f, 50f)]
+    simd_float2 direction;//0~1
+};
 #endif /* GlitchStruct_h */
