@@ -143,4 +143,17 @@ struct AnalogNoiseArguments
     float fading;//[Range(0f, 1f)]
     float luminanceJitterThreshold;//[Range(0f, 1f)]
 };
+
+struct ScreenJumpArguments
+{
+    float jumpIndensity;//[Range(0.0f, 1.0f)]
+    float jumpTime; 
+};
+
+struct ScreenShakeArguments
+{
+    float time;
+    float indensity;//[Range(0.0f, 0.25f)]
+};
+
 #endif /* GlitchStruct_h */
