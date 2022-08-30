@@ -8,7 +8,7 @@
 import Foundation
 import RealityKit
 import MetalKit
-import Metal
+
 class GlitchScanLineJitter {
     enum Version {
         case Horizontal

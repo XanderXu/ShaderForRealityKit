@@ -135,4 +135,12 @@ struct ScanLineJitterArguments
     float amount;
     float threshold;
 };
+
+struct AnalogNoiseArguments
+{
+    float time;
+    float speed; //[Range(0f, 1f)]
+    float fading;//[Range(0f, 1f)]
+    float luminanceJitterThreshold;//[Range(0f, 1f)]
+};
 #endif /* GlitchStruct_h */

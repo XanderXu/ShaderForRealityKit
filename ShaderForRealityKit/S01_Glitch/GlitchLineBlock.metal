@@ -11,7 +11,7 @@ using namespace metal;
 
 inline float randomNoise(float2 c)
 {
-    return fract(sin(dot(c.xy, float2(12.9898, 78.233))) * 43758.5453);
+    return fract(sin(dot(c, float2(12.9898, 78.233))) * 43758.5453);
 }
 
 inline float trunc(float x, float num_levels)
