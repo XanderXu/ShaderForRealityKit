@@ -28,6 +28,9 @@
 		6C7B812328BE59E400648F4B /* GlitchScreenJump.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B812228BE59E400648F4B /* GlitchScreenJump.metal */; };
 		6C7B812528BE5F1D00648F4B /* GlitchScreenShake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B812428BE5F1D00648F4B /* GlitchScreenShake.swift */; };
 		6C7B812728BE5F2A00648F4B /* GlitchScreenShake.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B812628BE5F2A00648F4B /* GlitchScreenShake.metal */; };
+		6C7B812928BF937A00648F4B /* GlitchWaveJitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B812828BF937A00648F4B /* GlitchWaveJitter.swift */; };
+		6C7B812B28BF939100648F4B /* GlitchWaveJitter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B812A28BF939100648F4B /* GlitchWaveJitter.metal */; };
+		6C7B812D28BFA30A00648F4B /* XNoiseLibrary.h in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B812C28BFA30A00648F4B /* XNoiseLibrary.h */; };
 		6C8E64B028AB9B1100265189 /* GlitchRGBSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E64AF28AB9B1100265189 /* GlitchRGBSplit.swift */; };
 		6C8E64B228ABA61A00265189 /* GlitchImageBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E64B128ABA61A00265189 /* GlitchImageBlock.swift */; };
 		6C8E64B428ABB00400265189 /* GlitchImageBlock.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E64B328ABB00400265189 /* GlitchImageBlock.metal */; };
@@ -58,6 +61,9 @@
 		6C7B812228BE59E400648F4B /* GlitchScreenJump.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GlitchScreenJump.metal; sourceTree = "<group>"; };
 		6C7B812428BE5F1D00648F4B /* GlitchScreenShake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchScreenShake.swift; sourceTree = "<group>"; };
 		6C7B812628BE5F2A00648F4B /* GlitchScreenShake.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GlitchScreenShake.metal; sourceTree = "<group>"; };
+		6C7B812828BF937A00648F4B /* GlitchWaveJitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchWaveJitter.swift; sourceTree = "<group>"; };
+		6C7B812A28BF939100648F4B /* GlitchWaveJitter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GlitchWaveJitter.metal; sourceTree = "<group>"; };
+		6C7B812C28BFA30A00648F4B /* XNoiseLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XNoiseLibrary.h; sourceTree = "<group>"; };
 		6C8E64AF28AB9B1100265189 /* GlitchRGBSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchRGBSplit.swift; sourceTree = "<group>"; };
 		6C8E64B128ABA61A00265189 /* GlitchImageBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchImageBlock.swift; sourceTree = "<group>"; };
 		6C8E64B328ABB00400265189 /* GlitchImageBlock.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GlitchImageBlock.metal; sourceTree = "<group>"; };
@@ -113,6 +119,9 @@
 				6C7B812228BE59E400648F4B /* GlitchScreenJump.metal */,
 				6C7B812428BE5F1D00648F4B /* GlitchScreenShake.swift */,
 				6C7B812628BE5F2A00648F4B /* GlitchScreenShake.metal */,
+				6C7B812828BF937A00648F4B /* GlitchWaveJitter.swift */,
+				6C7B812A28BF939100648F4B /* GlitchWaveJitter.metal */,
+				6C7B812C28BFA30A00648F4B /* XNoiseLibrary.h */,
 				6C07CDEF289F896D004D2A27 /* GlitchStruct.h */,
 				6C07CDF0289F896E004D2A27 /* BridgeHeader.h */,
 				6C07CDED289F896D004D2A27 /* Experience.rcproject */,
@@ -209,12 +218,15 @@
 				6C7B810D28BA1CB200648F4B /* GlitchLineBlock.swift in Sources */,
 				6C7B812328BE59E400648F4B /* GlitchScreenJump.metal in Sources */,
 				6C7B812528BE5F1D00648F4B /* GlitchScreenShake.swift in Sources */,
+				6C7B812B28BF939100648F4B /* GlitchWaveJitter.metal in Sources */,
 				6C7B811128BBA2EA00648F4B /* GlitchTileJitter.metal in Sources */,
 				6C7B811F28BE482F00648F4B /* GlitchAnalogNoise.metal in Sources */,
+				6C7B812928BF937A00648F4B /* GlitchWaveJitter.swift in Sources */,
 				6C7B811B28BE471400648F4B /* GlitchDigitalStripe.metal in Sources */,
 				6C7B811D28BE481E00648F4B /* GlitchAnalogNoise.swift in Sources */,
 				6C8E64B028AB9B1100265189 /* GlitchRGBSplit.swift in Sources */,
 				6C7B811328BBA31200648F4B /* GlitchTileJitter.swift in Sources */,
+				6C7B812D28BFA30A00648F4B /* XNoiseLibrary.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

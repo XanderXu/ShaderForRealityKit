@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var arView: ARView!
     var computePipeline: MTLComputePipelineState?
-    let glitch = GlitchScreenShake()
+    let glitch = GlitchWaveJitter()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
 
     func loadPostprocessingShader(device: MTLDevice) {
-        if let kernel = glitch.loadPostProcess(device: device, version: .Vertical) {
+        if let kernel = glitch.loadPostProcess(device: device, version: .Horizontal) {
             computePipeline = try? device.makeComputePipelineState(function: kernel)
         }
     }

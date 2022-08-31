@@ -156,4 +156,16 @@ struct ScreenShakeArguments
     float indensity;//[Range(0.0f, 0.25f)]
 };
 
+struct WaveJitterArguments
+{
+    float time;
+    float speed; //[Range(0f, 1f)]
+    enum IntervalType type;
+    float frequency; //[Range(0f, 50f)]
+    float amount;//[Range(0f, 2f)]
+    float RGBSplitIndensity;//0-25
+    simd_float2 resolution;//640,480
+};
+
+
 #endif /* GlitchStruct_h */
