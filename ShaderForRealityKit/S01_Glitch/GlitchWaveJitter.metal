@@ -25,7 +25,7 @@ void postProcessWaveJitterHorizontal(uint2 gid [[thread_position_in_grid]],
     half _Speed = args->speed;
     half _Amount = args->amount;
     int type = args->type;
-    half _RGBSplitIndensity = args->RGBSplitIndensity;
+    half _RGBSplitIntensity = args->RGBSplitIntensity;
     half2 _Resolution = half2(args->resolution);
     
     // uv 与 time 转换
@@ -43,7 +43,7 @@ void postProcessWaveJitterHorizontal(uint2 gid [[thread_position_in_grid]],
     float noise_wave_2 = snoise(float2(uv_y * 0.02, time * 10)) * (strength * _Amount * 4.0);
     float noise_wave_x = noise_wave_1 * noise_wave_2 / _Resolution.x;
     float uv_x = uv.x + noise_wave_x;
-    float rgbSplit_uv_x = (_RGBSplitIndensity * 50 + (20.0 * strength + 1.0)) * noise_wave_x / _Resolution.x;
+    float rgbSplit_uv_x = (_RGBSplitIntensity * 50 + (20.0 * strength + 1.0)) * noise_wave_x / _Resolution.x;
     
     // 计算分离后的坐标
     half2 offsetG = half2(uv_x, uv.y) * inSize;
@@ -74,7 +74,7 @@ void postProcessWaveJitterVertical(uint2 gid [[thread_position_in_grid]],
     half _Speed = args->speed;
     half _Amount = args->amount;
     int type = args->type;
-    half _RGBSplitIndensity = args->RGBSplitIndensity;
+    half _RGBSplitIntensity = args->RGBSplitIntensity;
     half2 _Resolution = half2(args->resolution);
     
     // uv 与 time 转换
@@ -92,7 +92,7 @@ void postProcessWaveJitterVertical(uint2 gid [[thread_position_in_grid]],
     float noise_wave_2 = snoise(float2(uv_x * 0.02, time * 10)) * (strength * _Amount * 4.0);
     float noise_wave_y = noise_wave_1 * noise_wave_2 / _Resolution.x;
     float uv_y = uv.y + noise_wave_y;
-    float rgbSplit_uv_y = (_RGBSplitIndensity * 50 + (20.0 * strength + 1.0)) * noise_wave_y / _Resolution.y;
+    float rgbSplit_uv_y = (_RGBSplitIntensity * 50 + (20.0 * strength + 1.0)) * noise_wave_y / _Resolution.y;
     
     // 计算分离后的坐标
     half2 offsetG = half2(uv.x, uv_y) * inSize;

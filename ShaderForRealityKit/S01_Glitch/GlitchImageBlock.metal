@@ -107,8 +107,8 @@ void postProcessImageBlockV3(uint2 gid [[thread_position_in_grid]],
     float _TimeX = args->time;
     half _Amount = args->amount;
     half _Fade = args->fade;
-    half _RGBSplit_Indensity = args->RGBSplitIndensity;
-    half _BlockLayer1_Indensity = args->blockLayer1_Indensity;
+    half _RGBSplit_Intensity = args->RGBSplitIntensity;
+    half _BlockLayer1_Intensity = args->blockLayer1_Intensity;
     half2 _BlockLayer1_UV = half2(args->blockLayer1_UV);
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
@@ -116,8 +116,8 @@ void postProcessImageBlockV3(uint2 gid [[thread_position_in_grid]],
     float time = _TimeX * _Speed;
     // 计算错位图块
     half blockLayer1 = randomNoise(float2(floor(uv * _BlockLayer1_UV) * floor(time * 30)));
-    half lineNoise1 = pow(blockLayer1, _BlockLayer1_Indensity);
-    half rgbSplitNoise = pow((randomNoise(5.1379)), 7.1) * _RGBSplit_Indensity;
+    half lineNoise1 = pow(blockLayer1, _BlockLayer1_Intensity);
+    half rgbSplitNoise = pow((randomNoise(5.1379)), 7.1) * _RGBSplit_Intensity;
     half lineNoise = lineNoise1 * _Amount - rgbSplitNoise;
     half2 noiseXY = 0.1h * half2(randomNoise(5.0), randomNoise(31.0));
     // 计算错位后的坐标
@@ -148,10 +148,10 @@ void postProcessImageBlockV4(uint2 gid [[thread_position_in_grid]],
     float _TimeX = args->time;
     half _Amount = args->amount;
     half _Fade = args->fade;
-    half _RGBSplit_Indensity = args->RGBSplitIndensity;
-    half _BlockLayer1_Indensity = args->blockLayer1_Indensity;
+    half _RGBSplit_Intensity = args->RGBSplitIntensity;
+    half _BlockLayer1_Intensity = args->blockLayer1_Intensity;
     half2 _BlockLayer1_UV = half2(args->blockLayer1_UV);
-    half _BlockLayer2_Indensity = args->blockLayer2_Indensity;
+    half _BlockLayer2_Intensity = args->blockLayer2_Intensity;
     half2 _BlockLayer2_UV = half2(args->blockLayer2_UV);
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
@@ -159,11 +159,11 @@ void postProcessImageBlockV4(uint2 gid [[thread_position_in_grid]],
     float time = _TimeX * _Speed;
     // 计算错位图块
     half blockLayer1 = randomNoise(float2(floor(uv * _BlockLayer1_UV) * floor(time * 30)));
-    half lineNoise1 = pow(blockLayer1, _BlockLayer1_Indensity);
+    half lineNoise1 = pow(blockLayer1, _BlockLayer1_Intensity);
     half blockLayer2 = randomNoise(float2(floor(uv * _BlockLayer2_UV) * floor(time * 30)));
-    half lineNoise2 = pow(blockLayer2, _BlockLayer2_Indensity);
+    half lineNoise2 = pow(blockLayer2, _BlockLayer2_Intensity);
     
-    half rgbSplitNoise = pow(randomNoise(5.1379), 7.1) * _RGBSplit_Indensity;
+    half rgbSplitNoise = pow(randomNoise(5.1379), 7.1) * _RGBSplit_Intensity;
     half lineNoise = lineNoise1 * lineNoise2 * _Amount - rgbSplitNoise;
     half2 noiseXY = 0.1h * half2(randomNoise(7.0), randomNoise(23.0));
     // 计算错位后的坐标

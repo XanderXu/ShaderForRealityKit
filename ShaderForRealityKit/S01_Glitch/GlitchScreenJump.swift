@@ -36,9 +36,9 @@ class GlitchScreenJump {
     }
     
     func setCustomArguments(encoder: MTLComputeCommandEncoder, context: ARView.PostProcessContext) {
-        let jumpIndensity: Float = 0.35
-        screenJumpTime += Float(context.time - lastTime) * jumpIndensity * 9.8
-        var args = ScreenJumpArguments(jumpIndensity: 0.35, jumpTime: screenJumpTime)
+        let jumpIntensity: Float = 0.35
+        screenJumpTime += Float(context.time - lastTime) * jumpIntensity * 9.8
+        var args = ScreenJumpArguments(jumpIntensity: 0.35, jumpTime: screenJumpTime)
         encoder.setBytes(&args, length: MemoryLayout<ScreenJumpArguments>.stride, index: 0)
         lastTime = context.time
     }

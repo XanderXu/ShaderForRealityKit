@@ -78,7 +78,7 @@ class GlitchRGBSplit {
             var args = RGBSplitArgumentsV3(time: Float(context.time), amount: 30, speed: 15, frequency: frequency, type: intervalType, direction: simd_float2(x: 1, y: 0))
             encoder.setBytes(&args, length: MemoryLayout<RGBSplitArgumentsV3>.stride, index: 0)
         case .V4:
-            var args = RGBSplitArgumentsV4(time: Float(context.time), indensity: 0.5*0.1, speed: 10, direction: simd_float2(x: 1, y: 0))
+            var args = RGBSplitArgumentsV4(time: Float(context.time), intensity: 0.5*0.1, speed: 10, direction: simd_float2(x: 1, y: 0))
             encoder.setBytes(&args, length: MemoryLayout<RGBSplitArgumentsV4>.stride, index: 0)
         case .V5:
             encoder.setTexture(noiseTexture, index: 2)

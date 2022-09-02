@@ -34,8 +34,8 @@ class GlitchScreenShake {
     }
     
     func setCustomArguments(encoder: MTLComputeCommandEncoder, context: ARView.PostProcessContext) {
-        let indensity: Float = 0.5 * 0.25
-        var args = ScreenShakeArguments(time: Float(context.time/20), indensity: indensity)
+        let intensity: Float = 0.5 * 0.25
+        var args = ScreenShakeArguments(time: Float(context.time/20), intensity: intensity)
         encoder.setBytes(&args, length: MemoryLayout<ScreenShakeArguments>.stride, index: 0)
     }
 }

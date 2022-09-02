@@ -48,10 +48,10 @@ class GlitchImageBlock {
             var args = ImageBlockArgumentsV2(time: Float(context.time), speed: 10, blockSize: 8, maxRGBSplit: simd_float2(x: 1, y: 1))
             encoder.setBytes(&args, length: MemoryLayout<RGBSplitArgumentsV2>.stride, index: 0)
         case .V3:
-            var args = ImageBlockArgumentsV3(time: Float(context.time), speed: 0.5, amount: 1, fade: 1, RGBSplitIndensity: 2, blockLayer1_Indensity: 8, blockLayer1_UV: simd_float2(x: 4, y: 16))
+            var args = ImageBlockArgumentsV3(time: Float(context.time), speed: 0.5, amount: 1, fade: 1, RGBSplitIntensity: 2, blockLayer1_Intensity: 8, blockLayer1_UV: simd_float2(x: 4, y: 16))
             encoder.setBytes(&args, length: MemoryLayout<ImageBlockArgumentsV3>.stride, index: 0)
         case .V4:
-            var args = ImageBlockArgumentsV4(time: Float(context.time), speed: 0.5, amount: 1, fade: 1, RGBSplitIndensity: 2, blockLayer1_Indensity: 8, blockLayer2_Indensity: 4, blockLayer1_UV: simd_float2(x: 9, y: 9), blockLayer2_UV: simd_float2(x: 5, y: 5))
+            var args = ImageBlockArgumentsV4(time: Float(context.time), speed: 0.5, amount: 1, fade: 1, RGBSplitIntensity: 2, blockLayer1_Intensity: 8, blockLayer2_Intensity: 4, blockLayer1_UV: simd_float2(x: 9, y: 9), blockLayer2_UV: simd_float2(x: 5, y: 5))
             encoder.setBytes(&args, length: MemoryLayout<ImageBlockArgumentsV4>.stride, index: 0)
         }
     }

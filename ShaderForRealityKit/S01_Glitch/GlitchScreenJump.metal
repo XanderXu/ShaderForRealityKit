@@ -20,14 +20,14 @@ void postProcessScreenJumpHorizontal(uint2 gid [[thread_position_in_grid]],
     }
     // 参数传递
     float _JumpTime = args->jumpTime;
-    float _JumpIndensity = args->jumpIndensity;
+    float _JumpIntensity = args->jumpIntensity;
     
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
     float2 uv = float2(gid) / float2(inSize);
     
     // 计算错位后的坐标
-    float jump = mix(uv.x, fract(uv.x + _JumpTime), _JumpIndensity);
+    float jump = mix(uv.x, fract(uv.x + _JumpTime), _JumpIntensity);
     
     half2 offsetUV = fract(half2(jump, uv.y)) * inSize;
     uint2 xy = uint2(offsetUV);
@@ -47,14 +47,14 @@ void postProcessScreenJumpVertical(uint2 gid [[thread_position_in_grid]],
     }
     // 参数传递
     float _JumpTime = args->jumpTime;
-    float _JumpIndensity = args->jumpIndensity;
+    float _JumpIntensity = args->jumpIntensity;
     
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
     float2 uv = float2(gid) / float2(inSize);
     
     // 计算错位后的坐标
-    float jump = mix(uv.y, fract(uv.y + _JumpTime), _JumpIndensity);
+    float jump = mix(uv.y, fract(uv.y + _JumpTime), _JumpIntensity);
     
     half2 offsetUV = fract(half2(uv.x, jump)) * inSize;
     uint2 xy = uint2(offsetUV);

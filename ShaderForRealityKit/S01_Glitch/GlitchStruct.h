@@ -53,7 +53,7 @@ struct RGBSplitArgumentsV3
 struct RGBSplitArgumentsV4
 {
     float time;
-    float indensity;//-0.1~0.1
+    float intensity;//-0.1~0.1
     float speed;//0~100
     simd_float2 direction;//0~1
 };
@@ -86,8 +86,8 @@ struct ImageBlockArgumentsV3
     float speed;//0~1
     float amount;//0~10
     float fade;//0~1
-    float RGBSplitIndensity;//0-50
-    float blockLayer1_Indensity;//0-50
+    float RGBSplitIntensity;//0-50
+    float blockLayer1_Intensity;//0-50
     simd_float2 blockLayer1_UV;//0-50
 };
 
@@ -97,9 +97,9 @@ struct ImageBlockArgumentsV4
     float speed;//0~1
     float amount;//0~10
     float fade;//0~1
-    float RGBSplitIndensity;//0-50
-    float blockLayer1_Indensity;//0-50
-    float blockLayer2_Indensity;//0-50
+    float RGBSplitIntensity;//0-50
+    float blockLayer1_Intensity;//0-50
+    float blockLayer2_Intensity;//0-50
     simd_float2 blockLayer1_UV;//0-50
     simd_float2 blockLayer2_UV;//0-50
 };
@@ -146,14 +146,14 @@ struct AnalogNoiseArguments
 
 struct ScreenJumpArguments
 {
-    float jumpIndensity;//[Range(0.0f, 1.0f)]
+    float jumpIntensity;//[Range(0.0f, 1.0f)]
     float jumpTime; 
 };
 
 struct ScreenShakeArguments
 {
     float time;
-    float indensity;//[Range(0.0f, 0.25f)]
+    float intensity;//[Range(0.0f, 0.25f)]
 };
 
 struct WaveJitterArguments
@@ -163,18 +163,18 @@ struct WaveJitterArguments
     enum IntervalType type;
     float frequency; //[Range(0f, 50f)]
     float amount;//[Range(0f, 2f)]
-    float RGBSplitIndensity;//0-25
+    float RGBSplitIntensity;//0-25
     simd_float2 resolution;//640,480
 };
 
 struct DigitalStripeArguments
 {
     float intensity;//[Range(0.0f, 1.0f)]
-    float frequncy;//[Range(1, 10)]
-    float stripeLength;//[Range(0f, 0.99f)]
-    simd_int2 noiseTextureSize;//[Range(8, 256)]
+//    float frequncy;//[Range(1, 10)]
+//    float stripeLength;//[Range(0f, 0.99f)]
+//    simd_int2 noiseTextureSize;//[Range(8, 256)]
     int needStripColorAdjust;
-    simd_float3 StripColorAdjustColor;
-    float StripColorAdjustIndensity;//[Range(0, 10)]
+    simd_float3 stripColorAdjustColor;
+    float stripColorAdjustIntensity;//[Range(0, 10)]
 };
 #endif /* GlitchStruct_h */

@@ -44,7 +44,7 @@ class GlitchWaveJitter {
             frameCount += 1
         }
         
-        var args = WaveJitterArguments(time: Float(context.time), speed: 0.25, type: intervalType, frequency: frequency, amount: 1, RGBSplitIndensity: 20, resolution: simd_float2(x: 480, y: 640))
+        var args = WaveJitterArguments(time: Float(context.time), speed: 0.25, type: intervalType, frequency: frequency, amount: 1, RGBSplitIntensity: 20, resolution: simd_float2(x: 480, y: 640))
         encoder.setBytes(&args, length: MemoryLayout<WaveJitterArguments>.stride, index: 0)
     }
 }

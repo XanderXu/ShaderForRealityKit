@@ -154,14 +154,14 @@ void postProcessRGBSplitV4(uint2 gid [[thread_position_in_grid]],
     }
     // 参数传递
     half _Speed = args->speed;
-    half _Indensity = args->indensity;
+    half _Intensity = args->intensity;
     half2 _Direction = half2(args->direction);
     float _TimeX = args->time;
     // uv 与 time 转换
     half2 inSize = half2(inColor.get_width(), inColor.get_height());
     float time = _TimeX * _Speed;
     // 计算抖动曲线
-    half splitAmount = _Indensity * half(randomNoise(time, 2));
+    half splitAmount = _Intensity * half(randomNoise(time, 2));
     
     // 计算分离后的坐标
     half2 offset = splitAmount * inSize;
