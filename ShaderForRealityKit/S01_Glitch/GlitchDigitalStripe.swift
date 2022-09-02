@@ -60,26 +60,26 @@ class GlitchDigitalStripe {
             return
         }
         let count: Int = texture.width * texture.height * 4
-        let stride = MemoryLayout<Float>.stride
-        let aligment = MemoryLayout<Float>.alignment
+        let stride = MemoryLayout<UInt8>.stride
+        let aligment = MemoryLayout<UInt8>.alignment
         let byteCount = stride * count
         let pointer = UnsafeMutableRawPointer.allocate(byteCount: byteCount, alignment: aligment)
-        var r = Float.random(in: 0...1)
-        var g = Float.random(in: 0...1)
-        var b = Float.random(in: 0...1)
-        var a = Float.random(in: 0...1)
+        var r = UInt8.random(in: 0...255)
+        var g = UInt8.random(in: 0...255)
+        var b = UInt8.random(in: 0...255)
+        var a = UInt8.random(in: 0...255)
         for i in 0..<texture.width * texture.height {
             if Float.random(in: 0...1) > 0.89 {
-                print(i,r,g,b,a)
-                r = 1//Float.random(in: 0...1)
-                g = 1//Float.random(in: 0...1)
-                b = 1//Float.random(in: 0...1)
-                a = 1//Float.random(in: 0...1)
+                //print(i,r,g,b,a)
+                r = UInt8.random(in: 0...255)
+                g = UInt8.random(in: 0...255)
+                b = UInt8.random(in: 0...255)
+                a = UInt8.random(in: 0...255)
             }
-            pointer.advanced(by: i*stride*4).storeBytes(of: r, as: Float.self)
-            pointer.advanced(by: i*stride*4+1*stride).storeBytes(of: g, as: Float.self)
-            pointer.advanced(by: i*stride*4+2*stride).storeBytes(of: b, as: Float.self)
-            pointer.advanced(by: i*stride*4+3*stride).storeBytes(of: a, as: Float.self)
+            pointer.advanced(by: i*stride*4).storeBytes(of: r, as: UInt8.self)
+            pointer.advanced(by: i*stride*4+1*stride).storeBytes(of: g, as: UInt8.self)
+            pointer.advanced(by: i*stride*4+2*stride).storeBytes(of: b, as: UInt8.self)
+            pointer.advanced(by: i*stride*4+3*stride).storeBytes(of: a, as: UInt8.self)
         }
         
         let bytesPerRow = 4 * texture.width * stride
