@@ -36,7 +36,6 @@ class GlitchRGBSplit {
     private(set) var noiseTexture: MTLTexture?
     private(set) var version: Version = .V1
     var intervalType: IntervalType = .init(rawValue: 2)
-    private var randomFrequency: Float = 1
     private var frameCount: Int = 0
     func loadPostProcess(device: MTLDevice, version: Version = .V1) -> MTLFunction? {
         guard let library = device.makeDefaultLibrary() else {

@@ -24,7 +24,6 @@ class GlitchLineBlock {
         }
     }
     var intervalType: IntervalType = .init(rawValue: 2)
-    private var randomFrequency: Float = 1
     private var frameCount: Int = 0
     private(set) var version: Version = .Horizontal
     func loadPostProcess(device: MTLDevice, version: Version = .Horizontal) -> MTLFunction? {

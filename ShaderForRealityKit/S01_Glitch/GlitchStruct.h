@@ -167,5 +167,14 @@ struct WaveJitterArguments
     simd_float2 resolution;//640,480
 };
 
-
+struct DigitalStripeArguments
+{
+    float intensity;//[Range(0.0f, 1.0f)]
+    float frequncy;//[Range(1, 10)]
+    float stripeLength;//[Range(0f, 0.99f)]
+    simd_int2 noiseTextureSize;//[Range(8, 256)]
+    int needStripColorAdjust;
+    simd_float3 StripColorAdjustColor;
+    float StripColorAdjustIndensity;//[Range(0, 10)]
+};
 #endif /* GlitchStruct_h */
