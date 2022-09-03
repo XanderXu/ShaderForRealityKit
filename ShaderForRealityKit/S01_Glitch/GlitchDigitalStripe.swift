@@ -11,27 +11,29 @@ import MetalKit
 
 class GlitchDigitalStripe {
     enum Version {
-        case V1
+        case Horizontal
+        case Vertical
         
         var functionName: String {
             switch self {
-            case .V1:
-                return "postProcessDigitalStripe"
+            case .Horizontal:
+                return "postProcessDigitalStripeHorizontal"
+            case .Vertical:
+                return "postProcessDigitalStripeVertical"
             }
         }
     }
     
     private(set) var noiseTexture: MTLTexture?
-    private(set) var version: Version = .V1
-    var intervalType: IntervalType = .init(rawValue: 2)
+    private(set) var version: Version = .Horizontal
     private var frameCount: Int = 0
-    func loadPostProcess(device: MTLDevice, version: Version = .V1) -> MTLFunction? {
+    func loadPostProcess(device: MTLDevice, version: Version = .Horizontal) -> MTLFunction? {
         guard let library = device.makeDefaultLibrary() else {
             fatalError()
         }
         self.version = version
         let desc = MTLTextureDescriptor()
-        desc.pixelFormat = .bgra8Unorm;
+        desc.pixelFormat = .rgba8Unorm;
         desc.width = 20
         desc.height = 20
         noiseTexture = device.makeTexture(descriptor: desc)
@@ -39,18 +41,14 @@ class GlitchDigitalStripe {
     }
     
     func setCustomArguments(encoder: MTLComputeCommandEncoder, context: ARView.PostProcessContext) {
-        var frequency: Float = 8
+        let frequency: Float = 8
         if frameCount % Int(frequency) == 0 {
             updateRandomNoiseTexture(noiseTexture)
-            encoder.setTexture(noiseTexture, index: 2)
+            frameCount = 0
         }
-        if intervalType.rawValue == 2 {
-            if frameCount > Int(frequency) {
-                frameCount = 0
-                frequency = Float.random(in: 0...frequency)
-            }
-            frameCount += 1
-        }
+        encoder.setTexture(noiseTexture, index: 2)
+        frameCount += 1
+        
         var args = DigitalStripeArguments(intensity: 0.25, needStripColorAdjust: 1, stripColorAdjustColor: simd_float3(x: 0.1, y: 0.1, z: 0.1), stripColorAdjustIntensity: 2)
         encoder.setBytes(&args, length: MemoryLayout<DigitalStripeArguments>.stride, index: 0)
         
