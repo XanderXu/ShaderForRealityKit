@@ -150,7 +150,7 @@ void postProcessLineBlockVertical(uint2 gid [[thread_position_in_grid]],
     
     // [3] 生成源色调的blockLine Glitch
     float2 uv_blockLine = uv;
-    uv_blockLine = saturate(uv_blockLine + float2(0.1 * blockLine_random, 0));
+    uv_blockLine = saturate(uv_blockLine + float2(0, 0.1 * blockLine_random));
     uint2 xy = uint2(clamp(half2(uv_blockLine) * inSize, 0, inSize-1));
     half4 blockLineColor = inColor.read(xy);
     

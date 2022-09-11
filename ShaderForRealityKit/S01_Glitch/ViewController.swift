@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var arView: ARView!
     var computePipeline: MTLComputePipelineState?
-    let glitch = GlitchTileJitter()
+    let glitch = GlitchLineBlock()
     override func viewDidLoad() {
         super.viewDidLoad()
         
