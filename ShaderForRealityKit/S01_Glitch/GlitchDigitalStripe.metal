@@ -40,7 +40,7 @@ void postProcessDigitalStripeHorizontal(uint2 gid [[thread_position_in_grid]],
     uint2 xy = uint2(clamp(offset, 0, inSize-1));
     half4 source = inColor.read(xy);
 
-    if (_NeedStripColorAdjust == 1) {
+    if (_NeedStripColorAdjust == 0) {
         outColor.write(source, gid);
     } else {
         // 基于废弃帧插值
@@ -81,7 +81,7 @@ void postProcessDigitalStripeVertical(uint2 gid [[thread_position_in_grid]],
     uint2 xy = uint2(clamp(offset, 0, inSize-1));
     half4 source = inColor.read(xy);
 
-    if (_NeedStripColorAdjust == 1) {
+    if (_NeedStripColorAdjust == 0) {
         outColor.write(source, gid);
     } else {
         // 基于废弃帧插值

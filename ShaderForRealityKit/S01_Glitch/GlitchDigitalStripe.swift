@@ -49,7 +49,7 @@ class GlitchDigitalStripe {
         encoder.setTexture(noiseTexture, index: 2)
         frameCount += 1
         
-        var args = DigitalStripeArguments(intensity: 0.25, needStripColorAdjust: 1, stripColorAdjustColor: simd_float3(x: 0.1, y: 0.1, z: 0.1), stripColorAdjustIntensity: 2)
+        var args = DigitalStripeArguments(intensity: 0.25, needStripColorAdjust: 1, stripColorAdjustColor: simd_float3(x: 0.1, y: 0.4, z: 0.1), stripColorAdjustIntensity: 2)
         encoder.setBytes(&args, length: MemoryLayout<DigitalStripeArguments>.stride, index: 0)
         
     }
