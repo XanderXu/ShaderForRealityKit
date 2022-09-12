@@ -54,7 +54,7 @@ void postProcessScreenJumpVertical(uint2 gid [[thread_position_in_grid]],
     float2 uv = float2(gid) / float2(inSize);
     
     // 计算错位后的坐标
-    float jump = mix(uv.y, fract(uv.y + _JumpTime), _JumpIntensity);
+    float jump = mix(uv.y, fract(uv.y - _JumpTime), _JumpIntensity);
     
     half2 offsetUV = fract(half2(uv.x, jump)) * inSize;
     uint2 xy = uint2(offsetUV);

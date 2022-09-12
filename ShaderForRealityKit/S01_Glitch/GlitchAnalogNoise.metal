@@ -35,17 +35,17 @@ void postProcessGlitchAnalogNoise(uint2 gid [[thread_position_in_grid]],
     
     half3 sceneColor = inColor.read(gid).rgb;
     half3 noiseColor = sceneColor;
-    
+    // 计算颜色亮度，即黑白度，做为噪点颜色基准
     half luminance = dot(noiseColor, half3(0.22h, 0.707h, 0.071h));
     if (randomNoise(float2(time)) > _LuminanceJitterThreshold)
     {
         noiseColor = half3(luminance);
     }
-    
+    // 生成噪点颜色
     float noiseX = randomNoise(time + uv / float2(-213, 5.53));
     float noiseY = randomNoise(time - uv / float2(213, -5.53));
     float noiseZ = randomNoise(time + uv / float2(213, 5.53));
-    
+    // 添加到基准上
     noiseColor += 0.25 * half3(noiseX,noiseY,noiseZ) - 0.125;
     
     noiseColor = mix(sceneColor, noiseColor, _Fading);
