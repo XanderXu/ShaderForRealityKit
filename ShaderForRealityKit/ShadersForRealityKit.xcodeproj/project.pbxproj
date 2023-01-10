@@ -34,6 +34,16 @@
 		6C8E64B028AB9B1100265189 /* GlitchRGBSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E64AF28AB9B1100265189 /* GlitchRGBSplit.swift */; };
 		6C8E64B228ABA61A00265189 /* GlitchImageBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E64B128ABA61A00265189 /* GlitchImageBlock.swift */; };
 		6C8E64B428ABB00400265189 /* GlitchImageBlock.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6C8E64B328ABB00400265189 /* GlitchImageBlock.metal */; };
+		6CC4F16C296D0B6100B6390C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F16B296D0B6100B6390C /* AppDelegate.swift */; };
+		6CC4F16E296D0B6100B6390C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F16D296D0B6100B6390C /* ViewController.swift */; };
+		6CC4F170296D0B6100B6390C /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F16F296D0B6100B6390C /* Experience.rcproject */; };
+		6CC4F173296D0B6100B6390C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CC4F171296D0B6100B6390C /* Main.storyboard */; };
+		6CC4F175296D0B6300B6390C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CC4F174296D0B6300B6390C /* Assets.xcassets */; };
+		6CC4F178296D0B6300B6390C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CC4F176296D0B6300B6390C /* LaunchScreen.storyboard */; };
+		6CC4F17E296D4A4F00B6390C /* SurfaceShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F17D296D4A4F00B6390C /* SurfaceShader.metal */; };
+		6CC4F180296D592B00B6390C /* MetalLibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F17F296D592B00B6390C /* MetalLibLoader.swift */; };
+		6CC4F184296D594500B6390C /* RealityKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F182296D594500B6390C /* RealityKit+Extensions.swift */; };
+		6CC4F185296D594500B6390C /* SIMD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F183296D594500B6390C /* SIMD+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,10 +77,29 @@
 		6C8E64AF28AB9B1100265189 /* GlitchRGBSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchRGBSplit.swift; sourceTree = "<group>"; };
 		6C8E64B128ABA61A00265189 /* GlitchImageBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchImageBlock.swift; sourceTree = "<group>"; };
 		6C8E64B328ABB00400265189 /* GlitchImageBlock.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GlitchImageBlock.metal; sourceTree = "<group>"; };
+		6CC4F169296D0B6100B6390C /* S02_Noise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = S02_Noise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CC4F16B296D0B6100B6390C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6CC4F16D296D0B6100B6390C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6CC4F16F296D0B6100B6390C /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
+		6CC4F172296D0B6100B6390C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6CC4F174296D0B6300B6390C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6CC4F177296D0B6300B6390C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6CC4F17C296D48D300B6390C /* NoiseLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoiseLibrary.h; sourceTree = "<group>"; };
+		6CC4F17D296D4A4F00B6390C /* SurfaceShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SurfaceShader.metal; sourceTree = "<group>"; };
+		6CC4F17F296D592B00B6390C /* MetalLibLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalLibLoader.swift; sourceTree = "<group>"; };
+		6CC4F182296D594500B6390C /* RealityKit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RealityKit+Extensions.swift"; sourceTree = "<group>"; };
+		6CC4F183296D594500B6390C /* SIMD+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SIMD+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6C07CDD9289F894F004D2A27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CC4F166296D0B6100B6390C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -84,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				6C07CDDD289F894F004D2A27 /* S01_Glitch */,
+				6CC4F16A296D0B6100B6390C /* S02_Noise */,
 				6C07CD91289F8601004D2A27 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				6C07CDDC289F894F004D2A27 /* S01_Glitch.app */,
+				6CC4F169296D0B6100B6390C /* S02_Noise.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +163,32 @@
 			path = S01_Glitch;
 			sourceTree = "<group>";
 		};
+		6CC4F16A296D0B6100B6390C /* S02_Noise */ = {
+			isa = PBXGroup;
+			children = (
+				6CC4F16B296D0B6100B6390C /* AppDelegate.swift */,
+				6CC4F16D296D0B6100B6390C /* ViewController.swift */,
+				6CC4F16F296D0B6100B6390C /* Experience.rcproject */,
+				6CC4F171296D0B6100B6390C /* Main.storyboard */,
+				6CC4F174296D0B6300B6390C /* Assets.xcassets */,
+				6CC4F176296D0B6300B6390C /* LaunchScreen.storyboard */,
+				6CC4F181296D594500B6390C /* Extensions */,
+				6CC4F17F296D592B00B6390C /* MetalLibLoader.swift */,
+				6CC4F17C296D48D300B6390C /* NoiseLibrary.h */,
+				6CC4F17D296D4A4F00B6390C /* SurfaceShader.metal */,
+			);
+			path = S02_Noise;
+			sourceTree = "<group>";
+		};
+		6CC4F181296D594500B6390C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6CC4F182296D594500B6390C /* RealityKit+Extensions.swift */,
+				6CC4F183296D594500B6390C /* SIMD+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,6 +209,23 @@
 			productReference = 6C07CDDC289F894F004D2A27 /* S01_Glitch.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6CC4F168296D0B6100B6390C /* S02_Noise */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CC4F17B296D0B6300B6390C /* Build configuration list for PBXNativeTarget "S02_Noise" */;
+			buildPhases = (
+				6CC4F165296D0B6100B6390C /* Sources */,
+				6CC4F166296D0B6100B6390C /* Frameworks */,
+				6CC4F167296D0B6100B6390C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = S02_Noise;
+			productName = S02_Noise;
+			productReference = 6CC4F169296D0B6100B6390C /* S02_Noise.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -159,11 +233,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					6C07CDDB289F894F004D2A27 = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					6CC4F168296D0B6100B6390C = {
+						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
@@ -181,6 +258,7 @@
 			projectRoot = "";
 			targets = (
 				6C07CDDB289F894F004D2A27 /* S01_Glitch */,
+				6CC4F168296D0B6100B6390C /* S02_Noise */,
 			);
 		};
 /* End PBXProject section */
@@ -193,6 +271,16 @@
 				6C07CDE9289F8951004D2A27 /* LaunchScreen.storyboard in Resources */,
 				6C07CDE6289F8951004D2A27 /* Assets.xcassets in Resources */,
 				6C07CDE4289F894F004D2A27 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CC4F167296D0B6100B6390C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CC4F178296D0B6300B6390C /* LaunchScreen.storyboard in Resources */,
+				6CC4F175296D0B6300B6390C /* Assets.xcassets in Resources */,
+				6CC4F173296D0B6100B6390C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +318,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6CC4F165296D0B6100B6390C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CC4F17E296D4A4F00B6390C /* SurfaceShader.metal in Sources */,
+				6CC4F184296D594500B6390C /* RealityKit+Extensions.swift in Sources */,
+				6CC4F16E296D0B6100B6390C /* ViewController.swift in Sources */,
+				6CC4F185296D594500B6390C /* SIMD+Extensions.swift in Sources */,
+				6CC4F180296D592B00B6390C /* MetalLibLoader.swift in Sources */,
+				6CC4F16C296D0B6100B6390C /* AppDelegate.swift in Sources */,
+				6CC4F170296D0B6100B6390C /* Experience.rcproject in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -245,6 +347,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				6C07CDE8289F8951004D2A27 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6CC4F171296D0B6100B6390C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6CC4F172296D0B6100B6390C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6CC4F176296D0B6300B6390C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6CC4F177296D0B6300B6390C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -428,6 +546,70 @@
 			};
 			name = Release;
 		};
+		6CC4F179296D0B6300B6390C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T59W99K34W;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ar.S02-Noise";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6CC4F17A296D0B6300B6390C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T59W99K34W;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ar.S02-Noise";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -445,6 +627,15 @@
 			buildConfigurations = (
 				6C07CDEB289F8951004D2A27 /* Debug */,
 				6C07CDEC289F8951004D2A27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CC4F17B296D0B6300B6390C /* Build configuration list for PBXNativeTarget "S02_Noise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CC4F179296D0B6300B6390C /* Debug */,
+				6CC4F17A296D0B6300B6390C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
