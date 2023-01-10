@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         planeModelEnity = planeEntity
     }
     func addNoiseShader(to modelEntity: ModelEntity) {
-        let surfaceShader = CustomMaterial.SurfaceShader(named: "noiseSurface", in: MetalLibLoader.library)
+        let surfaceShader = CustomMaterial.SurfaceShader(named: "sinNoiseSurface", in: MetalLibLoader.library)
         modelEntity.modifyMaterials { material in
             var customMaterial: CustomMaterial = try! CustomMaterial(
                 from: material,
