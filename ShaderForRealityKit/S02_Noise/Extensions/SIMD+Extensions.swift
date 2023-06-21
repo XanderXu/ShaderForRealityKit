@@ -16,3 +16,9 @@ extension SIMD3 where Scalar == Float {
     static let j = SIMD3<Float>(0, 1, 0)
     static let k = SIMD3<Float>(0, 0, 1)
 }
+extension SIMD4 where Scalar == Float {
+    var xyz: SIMD3<Float> {
+        return SIMD3<Float>(self.x, self.y, self.z)
+    }
+    
+}

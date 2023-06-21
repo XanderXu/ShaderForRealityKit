@@ -40,10 +40,11 @@
 		6CC4F173296D0B6100B6390C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CC4F171296D0B6100B6390C /* Main.storyboard */; };
 		6CC4F175296D0B6300B6390C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CC4F174296D0B6300B6390C /* Assets.xcassets */; };
 		6CC4F178296D0B6300B6390C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CC4F176296D0B6300B6390C /* LaunchScreen.storyboard */; };
-		6CC4F17E296D4A4F00B6390C /* SurfaceShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F17D296D4A4F00B6390C /* SurfaceShader.metal */; };
+		6CC4F17E296D4A4F00B6390C /* NoiseSurface.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F17D296D4A4F00B6390C /* NoiseSurface.metal */; };
 		6CC4F180296D592B00B6390C /* MetalLibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F17F296D592B00B6390C /* MetalLibLoader.swift */; };
 		6CC4F184296D594500B6390C /* RealityKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F182296D594500B6390C /* RealityKit+Extensions.swift */; };
 		6CC4F185296D594500B6390C /* SIMD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC4F183296D594500B6390C /* SIMD+Extensions.swift */; };
+		958C12082A42EAE700AE1F8B /* NoiseShaderCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C12072A42EAE700AE1F8B /* NoiseShaderCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,10 +86,11 @@
 		6CC4F174296D0B6300B6390C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6CC4F177296D0B6300B6390C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6CC4F17C296D48D300B6390C /* NoiseLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoiseLibrary.h; sourceTree = "<group>"; };
-		6CC4F17D296D4A4F00B6390C /* SurfaceShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SurfaceShader.metal; sourceTree = "<group>"; };
+		6CC4F17D296D4A4F00B6390C /* NoiseSurface.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = NoiseSurface.metal; sourceTree = "<group>"; };
 		6CC4F17F296D592B00B6390C /* MetalLibLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalLibLoader.swift; sourceTree = "<group>"; };
 		6CC4F182296D594500B6390C /* RealityKit+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RealityKit+Extensions.swift"; sourceTree = "<group>"; };
 		6CC4F183296D594500B6390C /* SIMD+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SIMD+Extensions.swift"; sourceTree = "<group>"; };
+		958C12072A42EAE700AE1F8B /* NoiseShaderCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseShaderCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,53 @@
 			children = (
 				6C07CDDE289F894F004D2A27 /* AppDelegate.swift */,
 				6C07CDE0289F894F004D2A27 /* ViewController.swift */,
+				95FB67CD2A42D97C00B50F58 /* GlitchEffect */,
+				6C07CDED289F896D004D2A27 /* Experience.rcproject */,
+				6C07CDE2289F894F004D2A27 /* Main.storyboard */,
+				6C07CDE5289F8951004D2A27 /* Assets.xcassets */,
+				6C07CDE7289F8951004D2A27 /* LaunchScreen.storyboard */,
+			);
+			path = S01_Glitch;
+			sourceTree = "<group>";
+		};
+		6CC4F16A296D0B6100B6390C /* S02_Noise */ = {
+			isa = PBXGroup;
+			children = (
+				6CC4F16B296D0B6100B6390C /* AppDelegate.swift */,
+				6CC4F16D296D0B6100B6390C /* ViewController.swift */,
+				6CC4F16F296D0B6100B6390C /* Experience.rcproject */,
+				6CC4F171296D0B6100B6390C /* Main.storyboard */,
+				6CC4F174296D0B6300B6390C /* Assets.xcassets */,
+				6CC4F176296D0B6300B6390C /* LaunchScreen.storyboard */,
+				6CC4F181296D594500B6390C /* Extensions */,
+				958C12092A42F74B00AE1F8B /* NoiseLibrary */,
+			);
+			path = S02_Noise;
+			sourceTree = "<group>";
+		};
+		6CC4F181296D594500B6390C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6CC4F182296D594500B6390C /* RealityKit+Extensions.swift */,
+				6CC4F183296D594500B6390C /* SIMD+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		958C12092A42F74B00AE1F8B /* NoiseLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				6CC4F17F296D592B00B6390C /* MetalLibLoader.swift */,
+				6CC4F17C296D48D300B6390C /* NoiseLibrary.h */,
+				6CC4F17D296D4A4F00B6390C /* NoiseSurface.metal */,
+				958C12072A42EAE700AE1F8B /* NoiseShaderCenter.swift */,
+			);
+			path = NoiseLibrary;
+			sourceTree = "<group>";
+		};
+		95FB67CD2A42D97C00B50F58 /* GlitchEffect */ = {
+			isa = PBXGroup;
+			children = (
 				6C8E64AF28AB9B1100265189 /* GlitchRGBSplit.swift */,
 				6C07CDEE289F896D004D2A27 /* GlitchRGBSplit.metal */,
 				6C8E64B128ABA61A00265189 /* GlitchImageBlock.swift */,
@@ -155,38 +204,8 @@
 				6C7B812C28BFA30A00648F4B /* XNoiseLibrary.h */,
 				6C07CDEF289F896D004D2A27 /* GlitchStruct.h */,
 				6C07CDF0289F896E004D2A27 /* BridgeHeader.h */,
-				6C07CDED289F896D004D2A27 /* Experience.rcproject */,
-				6C07CDE2289F894F004D2A27 /* Main.storyboard */,
-				6C07CDE5289F8951004D2A27 /* Assets.xcassets */,
-				6C07CDE7289F8951004D2A27 /* LaunchScreen.storyboard */,
 			);
-			path = S01_Glitch;
-			sourceTree = "<group>";
-		};
-		6CC4F16A296D0B6100B6390C /* S02_Noise */ = {
-			isa = PBXGroup;
-			children = (
-				6CC4F16B296D0B6100B6390C /* AppDelegate.swift */,
-				6CC4F16D296D0B6100B6390C /* ViewController.swift */,
-				6CC4F16F296D0B6100B6390C /* Experience.rcproject */,
-				6CC4F171296D0B6100B6390C /* Main.storyboard */,
-				6CC4F174296D0B6300B6390C /* Assets.xcassets */,
-				6CC4F176296D0B6300B6390C /* LaunchScreen.storyboard */,
-				6CC4F181296D594500B6390C /* Extensions */,
-				6CC4F17F296D592B00B6390C /* MetalLibLoader.swift */,
-				6CC4F17C296D48D300B6390C /* NoiseLibrary.h */,
-				6CC4F17D296D4A4F00B6390C /* SurfaceShader.metal */,
-			);
-			path = S02_Noise;
-			sourceTree = "<group>";
-		};
-		6CC4F181296D594500B6390C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				6CC4F182296D594500B6390C /* RealityKit+Extensions.swift */,
-				6CC4F183296D594500B6390C /* SIMD+Extensions.swift */,
-			);
-			path = Extensions;
+			path = GlitchEffect;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,7 +341,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CC4F17E296D4A4F00B6390C /* SurfaceShader.metal in Sources */,
+				958C12082A42EAE700AE1F8B /* NoiseShaderCenter.swift in Sources */,
+				6CC4F17E296D4A4F00B6390C /* NoiseSurface.metal in Sources */,
 				6CC4F184296D594500B6390C /* RealityKit+Extensions.swift in Sources */,
 				6CC4F16E296D0B6100B6390C /* ViewController.swift in Sources */,
 				6CC4F185296D594500B6390C /* SIMD+Extensions.swift in Sources */,

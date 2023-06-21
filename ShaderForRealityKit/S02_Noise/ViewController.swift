@@ -7,6 +7,7 @@
 
 import UIKit
 import RealityKit
+import Combine
 
 class ViewController: UIViewController {
     
@@ -14,6 +15,7 @@ class ViewController: UIViewController {
     var animatedNoise: Float = 0
     var boxModelEntity: ModelEntity?
     var planeModelEnity: ModelEntity?
+    var update: Cancellable?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,13 +35,18 @@ class ViewController: UIViewController {
         addNoiseShader(to: planeEntity)
         boxAnchor.addChild(planeEntity)
         planeModelEnity = planeEntity
+        
+//        update = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
+//            let t = self.arView.cameraTransform.matrix * simd_float4x4(columns:( simd_float4(1, 0, 0, 0), simd_float4(0, 1, 0, 0), simd_float4(0, 0, 1, 0), simd_float4(0, 0, -0.3, 1)))
+//            planeEntity.setTransformMatrix(t, relativeTo: nil)
+//        }
+        
     }
     func addNoiseShader(to modelEntity: ModelEntity) {
-        let surfaceShader = CustomMaterial.SurfaceShader(named: "sinNoiseSurface", in: MetalLibLoader.library)
         modelEntity.modifyMaterials { material in
             var customMaterial: CustomMaterial = try! CustomMaterial(
                 from: material,
-                surfaceShader: surfaceShader
+                surfaceShader: CustomMaterial.NoiseCenter.sinNoiseShader
             )
             customMaterial.custom.value = SIMD4<Float>(0, 0, 0, 0)
             return customMaterial
