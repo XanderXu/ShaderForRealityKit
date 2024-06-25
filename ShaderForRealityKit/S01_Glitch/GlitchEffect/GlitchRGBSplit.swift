@@ -61,7 +61,7 @@ class GlitchRGBSplit {
     func setCustomArguments(encoder: MTLComputeCommandEncoder, context: ARView.PostProcessContext) {
         switch version {
         case .V1:
-            var args = RGBSplitArguments(time: Float(context.time), fading: 1, amount: 1, speed: 1, centerFading: 0, amountR: simd_float2(x: 1, y: 0), amountB: simd_float2(x: 1, y: 0))
+            var args = RGBSplitArguments(time: Float(context.time), fading: 0.5, amount: 1, speed: 1, centerFading: 0, amountR: simd_float2(x: 1, y: 0), amountB: simd_float2(x: 1, y: 0))
             encoder.setBytes(&args, length: MemoryLayout<RGBSplitArguments>.stride, index: 0)
         case .V2:
             var args = RGBSplitArgumentsV2(time: Float(context.time), amount: 1, speed: 2, amplitude: 3, direction: simd_float2(x: 1, y: 0))
