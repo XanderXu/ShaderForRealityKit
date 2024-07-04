@@ -90,7 +90,7 @@ void postProcessWaveJitterVertical(uint2 gid [[thread_position_in_grid]],
     float uv_x = uv.x * _Resolution.x;
     float noise_wave_1 = snoise(float2(uv_x * 0.01, time * 20)) * (strength * _Amount * 32.0);
     float noise_wave_2 = snoise(float2(uv_x * 0.02, time * 10)) * (strength * _Amount * 4.0);
-    float noise_wave_y = noise_wave_1 * noise_wave_2 / _Resolution.x;
+    float noise_wave_y = noise_wave_1 * noise_wave_2 / _Resolution.y;
     float uv_y = uv.y + noise_wave_y;
     float rgbSplit_uv_y = (_RGBSplitIntensity * 50 + (20.0 * strength + 1.0)) * noise_wave_y / _Resolution.y;
     

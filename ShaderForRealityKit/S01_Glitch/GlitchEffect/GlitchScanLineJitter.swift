@@ -44,8 +44,8 @@ class GlitchScanLineJitter {
             frameCount += 1
         }
         let JitterIntensity: Float = 0.4//0～1
-        let displacement = 0.005 + pow(JitterIntensity, 3) * 0.1
-        let threshold = max(0, 1.0 - JitterIntensity * 1.2)
+        let displacement = 0.005 + pow(JitterIntensity, 3) * 0.1//0.0114
+        let threshold = max(0, 1.0 - JitterIntensity * 1.2)//0.52
         var args = ScanLineJitterArguments(time: Float(context.time), type: intervalType, frequency: frequency, amount: displacement, threshold: threshold)
         encoder.setBytes(&args, length: MemoryLayout<ScanLineJitterArguments>.stride, index: 0)
     }
